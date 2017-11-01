@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+@page {
+  size: 1024px 768px;
+  margin: 0;
+}
+
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+.sininen {
+   color: #FFFFFF;
+   background-color: #003479;
+   font-size: x-large;
+}
+
+.sininen-palkki {
+   background: linear-gradient(to bottom, #003479, #003479 6em, #FFFFFF 6em);
+   color: #282828;
+   font-size: x-large;
+}
+
+.sininen-palkki>h1 {
+   color: #FFFFFF;
+}
+
+.valkoinen {
+   color: #282828;
+   background-color: #FFFFFF;
+   font-size: x-large;
+}
+
+li {
+   margin-bottom: 0.5em;
+}
+
+ul {
+   margin-top: 0.5em;
+}
+
+body {
+   font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, a {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: normal;
+}
+
+a {
+   color: lightblue;
+   font-family: 'Source Sans Pro', sans-serif;
+}
+
+pre {
+   white-space: pre-wrap;
+}
+
+.remark-code, .remark-inline-code { font-family: 'Source Sans Pro', sans-serif; }
+
+.footnote {
+    font-size: 50%;
+}
+
+body img {
+    max-width: 100%;
+}
+
+.remark-slide-number {
+    bottom: 5%;
+    right: 5%;
+    position: absolute;
+}
+
+.remark-slide-content, .remark-container { }
+
+.remark-slide-scaler {
+    box-shadow: none;
+}
+
+.remark-code-line:empty {display: none;}
+
+table {
+   border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #282828;
+}
+
+th, td {
+   padding: 0.5em;
+}
+
+thead {
+   background-color: lightgrey;
+}
+
+strong {
+  font-weight: 900;
+  font-size: 1.1em;
+}
+
+/* Special list rule for toiminnan testaus */
+.clientList ul li ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+.clientList ul li ul li ul {
+   padding: 0 2em;
+   list-style:disc;
+}
+
+.smaller-code-font code {
+   font-size: 0.60em;
+}
