@@ -1,22 +1,20 @@
-# kapa-xroad-presentation
+## Running presentation
 
-source materials for the pdf presentations, in src/
+The presentation root is available in Github at https://vrk-kpa.github.io/xroad-training/
 
-License for the material https://creativecommons.org/licenses/by/4.0/deed.fi
-
-# Remarkjs presentations
-
-New presentation platform and place where storage them.
 
 ## Running presentation on local machine
 
-Depending what version of python you have:
+Depending on what version of Python you have:
 
 Find out python version: `python --version`
 
-If Python 2.x: `python -m SimpleHTTPServer 8000`
+If Python 2.x: `python -m SimpleHTTPServer 8080`
 
-If Python 3.x: `python -m http.server`
+If Python 3.x: `python -m http.server 8080`
+
+You can then access the presentation at `http://localhost:8080`
+
 
 ## Creating new presentation
 
@@ -29,10 +27,3 @@ Add new presentation to root folder index page as a link.
 ```html
 <li><a href="koulutukset/{presentation-name}">NIMI</a><br />Lisätietoa</li>
 ```
-
-
-## Changing images
-
-When updating image, that image can be used in different presentations, so please don't break others :)
-
-But you can update one image which is in all presentations by keeping same name for new image as old image had. That way all presentations will be updated same time.
