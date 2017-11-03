@@ -254,49 +254,6 @@ esuomi.fi => Tekniset vaatimukset
 - Huomioon otettava niiden myötä lokiarkistoinnit (konfiguraatioparametreillä), jottei se häiritsisi muuta toimintaa 
 
 ---
-
-template: sininen-palkki
-
-# Liityntäkatalogi
-
-- https://liityntakatalogi.suomi.fi/
-- Hakemisto Suomi.fi-palveluväylän (FI-ympäristön) tarjottavista palveluista ja lista liittyneistä organisaatioista
-- Tarkoituksena on helpottaa eri palveluntarjoajien palveluväyläympäristöön lisättyjen palveluiden löytämistä 
-- Liittynyt organisaatio täyttää puuttuvat tiedot, kun palvelu on saatu tuotua tuotantoympäristöön.
-
----
-
-template: sininen-palkki
-
-# Liityntäkatalogi 
-
-- https://liityntakatalogi.suomi.fi/ 
-    - Hallinnolliset kuvaukset
-    - Tekniset rajapintakuvaukset 
-
----
-
-template: sininen-palkki
-
-# Liittymisprosessi kuvana 
-
-- https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/
-- Tuotantoympäristöön liittyminen edellyttää testiympäristöön liittymistä 
-- Oman järjestelmän integraatiotyön suunnittelu ja toteutus kannattaa myös aloittaa
-- Liityntäpalvelimen asennukseen testi- tai tuotantoympäristöön voi kulua jopa kuukausi
-    - Varmennepalvelun ruuhkat aiheuttavat viivettä 
-- Kehitysympäristöön liittyminen suhteessa kevyempää, sillä sinne ei tarvita varmennehakemuksia
-    - Hyvä vaihtoehto, jos ei esimerkiksi tuotantoon siirtyminen ole näkypiirissä
-
----
-
-template: sininen-palkki
-
-# Mikä maksaa käyttöönotossa?
-.center[![](../images/kustannukset.png)]
-
-
----
 template: sininen-palkki
 
 # Yhteystiedot
