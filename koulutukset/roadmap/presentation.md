@@ -100,7 +100,7 @@ template: sininen-palkki
 
 # Väylän käyttöstatistiikkatietojen keruu
 
-Käyttöstatistiikkatietojen tietojen keruujärjestelmän tekeminen työn alle
+Käyttöstatistiikkatietojen keruujärjestelmän tekeminen työn alle
 - Työ aloitettu
     + Käyttöön 2018
 - Kerätään tietoja liityntäpalvelimilta mm. eri palveluiden kutsumääristä, viestin määristä ja vasteajoista.
@@ -112,7 +112,22 @@ Käyttöstatistiikkatietojen tietojen keruujärjestelmän tekeminen työn alle
 
 template: sininen-palkki
 
-# X-Road käyttökokemuksen pantaminen
+# Suomi.fi-palveluhallinta käyttöön
+
+_"Suomi.fi-palveluhallinta on palveluntarjoajille tarkoitettu itsepalveluportaali jossa voi tutustua, ottaa käyttöön ja hallita omia Suomi.fi-palveluitaan"_
+- Tulossa H2/2018 käyttöön
+- Palvelunhallinan kautta:
+    + Käyttölupahakemukset
+    + Sähköiset palveluvarmenteiden hakemukset, niiden päätökset ja tilatiedot
+    + Oman organisaation tiedot ja niiden päivitykset
+    + Omat liityntäpalvelimet
+    + Ym.
+
+---
+
+template: sininen-palkki
+
+# X-Road käyttökokemuksen parantaminen
 
 Erilaisia toimia tulossa X-Roadin käyttö- ja kehittäjäkokemuksen parantamiseksi:
 - X-Roadin ajaminen Docker kontissa
@@ -123,6 +138,7 @@ Erilaisia toimia tulossa X-Roadin käyttö- ja kehittäjäkokemuksen parantamise
 - Palveluväylä meetup loppuvuodesta 2017 
 
 ---
+
 
 template: sininen-palkki
 
