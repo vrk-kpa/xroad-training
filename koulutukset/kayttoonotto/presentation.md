@@ -31,10 +31,10 @@ template: sininen-palkki
     - https://esuomi.fi/palveluntarjoajille/palveluvayla/   
 - Youtube-video liityntäpalvelimen asentamisesta ja konfiguroinnista
     - https://www.youtube.com/watch?v=jHlr0jiOhUE&list=PLfKPQ6CBHVsx-c8YPSqZhBka0vjv2YvEh	
-- Lähdekoodit ja teknisempi dokumentaatio
-    - https://github.com/ria-ee/X-Road
+- Lähdekoodit https://github.com/ria-ee/X-Road ja tekninen dokumentaatio 
+https://github.com/ria-ee/X-Road/tree/develop/doc
 - Esimerkki siitä miten palveluväylän kautta hoidetut palvelukutsut toimivat
-    - https://gofore.com/miten-viestit-liikkuvat-suomi-fi-palveluvaylassa/   
+    - https://gofore.com/miten-viestit-liikkuvat-suomi-fi-palveluvaylassa/
 
 ---
 
@@ -45,10 +45,10 @@ class: split-55
 
 .column[
 1. Lähetä rekisteröintipyyntö esuomi.fi-sivulta löytyvällä lomakkeella 
-    - Liitä lomakkeen mukaan täytetyt autentikointi- ja allekirjoitusvarmennehakemukset
-2. Saat kuittauksen palveluväylän ylläpidolta, jonka jälkeen voit aloittaa liityntäpalvelimen asennukset
-3. Kun asennukset on tehtynä onnistuneesti voit lähteä testaamaan yhteyksien ja mahdollisia palveluja
-4. Viimeinen vaihe tuotantoympäristöön liitymisen jälkeen on liityntäkatalogitietojen täyttäminen 
+    - FI-TEST ja FI-ympäristöt: Liitä lomakkeen mukaan täytetyt autentikointi- ja allekirjoitusvarmennehakemukset
+2. Saat kuittauksen ja konfiguraatioankkurin palveluväylän ylläpidolta, jonka jälkeen voit aloittaa liityntäpalvelimen asennukset
+3. Asennusten jälkeen voit lähteä välittömästi testaamaan testaamaan yhteyksien ja mahdollisia palveluja
+4. Palvelun tarjoajille viimeinen vaihe liitymisen jälkeen on liityntäkatalogitietojen täyttäminen 
 ]
 .column[![](../images/liity.png)]
 
@@ -61,7 +61,9 @@ template: sininen-palkki
 - https://liityntakatalogi.suomi.fi/
 - Hakemisto Suomi.fi-palveluväylän (FI-ympäristön) tarjottavista palveluista ja lista liittyneistä organisaatioista
 - Tarkoituksena on helpottaa eri palveluntarjoajien palveluväyläympäristöön lisättyjen palveluiden löytämistä 
-- Liittynyt organisaatio täyttää puuttuvat tiedot, kun palvelu on saatu tuotua tuotantoympäristöön.
+- Liittynyt organisaatio täyttää puuttuvat tiedot, kun palvelu on saatu tuotua tuotantoympäristöön. Tekniset kuvaukset haetaan automaattisesti.
+
+- Myös testiympäristölle on olemassa oma epävirallinen ympäristö (kehityskäytössä): https://liityntakatalogi.qa.suomi.fi/fi/ 
 
 ---
 
@@ -77,15 +79,15 @@ template: sininen-palkki
 
 template: sininen-palkki
 
-# Liittymisprosessi kuvana 
+# Liittymisprosessi
 
 - https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/
 - Tuotantoympäristöön liittyminen edellyttää testiympäristöön liittymistä 
 - Oman järjestelmän integraatiotyön suunnittelu ja toteutus kannattaa myös aloittaa
 - Liityntäpalvelimen asennukseen testi- tai tuotantoympäristöön voi kulua jopa kuukausi
     - Varmennepalvelun ruuhkat aiheuttavat viivettä 
-- Kehitysympäristöön liittyminen suhteessa kevyempää, sillä sinne ei tarvita varmennehakemuksia
-    - Hyvä vaihtoehto, jos ei esimerkiksi tuotantoon siirtyminen ole näkypiirissä
+- Kehitysympäristöön liittyminen suhteessa kevyempää, sitä varten ei tarvitse täyttää virallisia varmennehakemuslomakkeita
+    - Hyvä vaihtoehto, jos ei esimerkiksi tuotantoon siirtyminen ole välittömässä näkypiirissä
 
 ---
 
