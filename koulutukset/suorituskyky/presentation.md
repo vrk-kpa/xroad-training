@@ -30,12 +30,12 @@ template: sininen-palkki
 Liityntäpalvelimen suorituskykyä seurataan jatkuvasti ja toimintaa pyritään jatkuvasti parantamaan ja suorituskykyä lisäämään.
 
 - Liityntäpalvelimen suorituskyky riippuu useasta tekijästä:
-    + merkittävästi alustapalvelimen kapasiteetista (keskusmuistista, suorittimesta, suorittimien määrästä, kovalevyn nopeudesta jne.) 
+    + **_merkittävästi_** alustapalvelimen kapasiteetista (keskusmuistista, suorittimesta, suorittimien määrästä, kovalevyn nopeudesta jne.) 
         * Lue lisää: [Liityntäpalvelimen tekniset vaatimukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/)
-    + merkittävästi käytetystä liityntäpalvelimen ohjelmistoversiosta (uusimmat tehokkaimpia)
-    + merkittävästi yhtäaikaisten palvelukutsujen määrästä
-    + merkittävästi väylässä välitettävien viestien (palvelukutsut ja –vastaukset) sanomakoosta
-    + paljon käytetyistä muistiasetuksista
+    + **_merkittävästi_** käytetystä liityntäpalvelimen ohjelmistoversiosta (uusimmat tehokkaimpia)
+    + **_merkittävästi_** yhtäaikaisten palvelukutsujen määrästä
+    + **_merkittävästi_** väylässä välitettävien viestien (palvelukutsut ja –vastaukset) sanomakoosta. Isot sanomat vaatii enemmän prosessointia.
+    + **_paljon_** käytetyistä muistiasetuksista
         * Säädä oman liityntäpalvelimen muistiasetukset!
             - [Liityntäpalvelimen suositellut muistiasetukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-suositellut-muistiasetukset/)
 
@@ -46,9 +46,9 @@ template: sininen-palkki
 # Liityntäpalvelimen suorityskyky (jatkoa)
 
 - Liityntäpalvelimen suorituskyky riippuu useasta tekijästä:
-    + paljon käytetystä verkosta (verkon nopeudesta)
-    + (enemmän tai vähemmän) liitetyn asiakasjärjestelmän palvelun toteutuksesta ja/tai verkkoinfrasta
-    + Ulkoisen kuormantasaajan käyttämisestä (kts. oma osa-alueensa koulutuspaketissa)
+    + **_merkittävästi_** ulkoisen kuormantasaajan käyttämisestä (kts. oma osa-alueensa koulutuspaketissa)
+    + **_paljon_** käytetystä verkosta (verkon nopeudesta)
+    + (_enemmän tai vähemmän_) liitetyn asiakasjärjestelmän palvelun toteutuksesta ja/tai verkkoinfrasta
 
 ---
 
@@ -56,7 +56,7 @@ template: sininen-palkki
 
 # Suorituskykytestaukset
 
-- Jokainen liityntäpalvelimen ohjelmistoversio suorituskyky testataan.
+- Jokainen liityntäpalvelimen ohjelmistoversio suorituskyky testataan moneen kertaan.
     + Kahdet eri suorituskykytestit (kahdella erilaisella alustaympäristöllä):
         * Minimikokoonpano (1 x cpu, 4G keskusmuisti, 7G levy)
         * Raskas tuotantokäyttö (8 x cpu, 16G keskusmuisti, 250G levy
@@ -115,7 +115,7 @@ Olemassa olevan järjestelmän tiedonsiirron lähtötiedot:
     - Tulevaisuudessa järjestelmän tulisi pystyä käsittelemään 145 000 000 (145M) ilmoitusta
         + Oletus: tammi-helmikuun ajalle reilu puolet (60%) ilmoituksista => 87 000 000 (=87M)
 
-- Lasketaan näiden tietojen pohjalta miten palveluväylän suorituskyky mahdollistaa tietojen siirroon. Oletetaan, että ilmoituksen tiedonsiirtoon käytetään yhtä 500k sanomaa (esim. PDF tiedosto palkkatuloilmoituksessa).
+- Lasketaan näiden tietojen pohjalta miten palveluväylän suorituskyky mahdollistaa tietojen siirroon. Oletetaan, että ilmoituksen tiedonsiirtoon käytetään yhtä 500k sanomaa (esim. veroilmoituksen lomake).
 
 ---
 
@@ -130,7 +130,7 @@ Lasketaan worst case skenaariolla:
     + => Minuutissa ilmoituksia: 60500/ 60 = 1008,333333333333 (~1010)
 
 - Lähtökohtaisesti raskas tuotanto liityntäpalvelin ([mitoitusohje](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/)) pystyy käsittelemään 150-250 kyselyä minuutissa (sanomakoot <=500K) suorituskykyisesti.
-    + Tarvitaan kuormantasaaja, joka jakaa saapuvat palvelukyselyt neljälle (4) liityntäpalvelimelle, jotta haluttu määrä ilmoituksia minuutissa voidaan käsitellä.
+    + => **_Tarvitaan kuormantasaaja_**, joka jakaa saapuvat palvelukyselyt neljälle (4) liityntäpalvelimelle, jotta haluttu määrä ilmoituksia minuutissa voidaan käsitellä.
     + Ruuhkahuippuja ja toimintavarmuutta lisäämään todennäköisesti kannattanee asentaa yhteensä 5-7 liityntäpalvelinta palvelukutsuja käsittelemään.
 
 ---
