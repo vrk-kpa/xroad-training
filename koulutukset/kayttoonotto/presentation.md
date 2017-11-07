@@ -27,7 +27,7 @@ template: sininen-palkki
 
 # Ennen liittymistä
 
-- Perehdy runsaaseen aineistoon, mm. palvelukuvaukseen, käyttöehtoihin ja käyttöönoton ohjeisiin
+- Perehdy runsaaseen aineistoon, mm. palvelukuvaukseen ja ohjeisiin (käyttöönotto ja ylläpito)
     - https://esuomi.fi/palveluntarjoajille/palveluvayla/   
 - Youtube-video liityntäpalvelimen asentamisesta ja konfiguroinnista
     - https://www.youtube.com/watch?v=jHlr0jiOhUE&list=PLfKPQ6CBHVsx-c8YPSqZhBka0vjv2YvEh	
@@ -44,10 +44,10 @@ class: split-55
 # Näin liityt
 
 .column[
-1. Lähetä rekisteröintipyyntö esuomi.fi-sivulta löytyvällä lomakkeella 
+1. Lähetä rekisteröintipyyntö esuomi.fi-sivulta löytyvällä lomakkeella (samalla hyväksyt käyttöehdot) 
     - FI-TEST ja FI-ympäristöt: Liitä lomakkeen mukaan täytetyt autentikointi- ja allekirjoitusvarmennehakemukset
 2. Saat kuittauksen ja konfiguraatioankkurin palveluväylän ylläpidolta, jonka jälkeen voit aloittaa liityntäpalvelimen asennukset
-3. Asennusten jälkeen voit lähteä välittömästi testaamaan yhteyksien ja mahdollisia palveluja
+3. Asennusten jälkeen voit lähteä välittömästi testaamaan yhteyksien toimivuutta ja mahdollisia palveluja
 4. Palvelun tarjoajille viimeinen vaihe liitymisen jälkeen on liityntäkatalogitietojen täyttäminen 
 ]
 .column[![](../images/liity.png)]
@@ -83,11 +83,12 @@ template: sininen-palkki
 
 - https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/
 - Tuotantoympäristöön liittyminen edellyttää testiympäristöön liittymistä 
-- Oman järjestelmän integraatiotyön suunnittelu ja toteutus kannattaa myös aloittaa
-- Liityntäpalvelimen asennukseen testi- tai tuotantoympäristöön voi kulua jopa kuukausi
+- Oman järjestelmän integraatiotyön suunnittelu ja toteutus kannattaa myös aloittaa 
+    - kutsuttava palvelu käyttö / tarjottava palvelun rajapinta
+- Liityntäpalvelimen asennukseen voi kulua jopa kuukausi (FI-TEST ja FI-ympäristöt)
     - Varmennepalvelun ruuhkat aiheuttavat viivettä 
-- Kehitysympäristöön liittyminen suhteessa kevyempää, sitä varten ei tarvitse täyttää virallisia varmennehakemuslomakkeita
-    - Hyvä vaihtoehto, jos ei esimerkiksi tuotantoon siirtyminen ole välittömässä näkypiirissä
+- Kehitysympäristöön liittyminen nopeaa, koska sitä varten ei tarvitse täyttää virallisia varmennehakemuslomakkeita
+    - Hyvä ja kevyt vaihtoehto, jos ei ole kiire tuotantoon siirtymisessä
 
 ---
 
