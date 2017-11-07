@@ -26,27 +26,14 @@ template: header
 
 template: sininen-palkki
 
-# Agenda:
-* Mitä haetaan?
-   * Korkea saatavuus (HA) ✓
-   * Suorituskyky
-
-Aiheena palvelun*tarjoajan* kuormantasaus
-
-✓ = saatavilla tällä hetkellä
----
-
-template: sininen-palkki
-
 # Kaksi tapaa
 ## Sisäinen kuormantasaus
-* Saatavilla
-* Kutsuja tietää, että käyttää useaa liityntäpalvelinta
+* Liityntäpalvelimeen sisäänrakennettu ominaisuus
+* Korkea saatavuus (HA)
 
 ## Ulkoinen kuormantasaus
-* Tulossa Q2/2017 (pilottikäyttö alkamassa lähiaikoina)
-* Kutsuja kuvittelee käyttävänsä yhtä liityntäpalvelinta
-
+* Saatavilla X-Roadin 6.16.0 versiosta lähtien
+* Suorituskyky
 
 ---
 
@@ -84,17 +71,10 @@ yleensä nopein vastaamaan pyyntöihin ("lyhyimmät piuhat")
 
 template: sininen-palkki
 
-# Sisäänrakennettu HA-tuki: muutoksia
-* Versiossa 6.7.13 parannettiin toimintaa luotettavammaksi (verkko)virhetilanteissa
-* Versiossa 6.9 parannetaan yhteysavausten nopeutta ja luotettavuutta, nopeutetaan toipumista verkko-ongelmista ja parannetaan konfiguroitavuutta
-* H2/2017 tulossa parannuksia, joilla mahdollisesti saadaan sisäänrakennettu HA myös jakamaan kuormaa tehokkaammin
-
----
-
-template: sininen-palkki
-
 # Ulkoinen kuormantasaus
-# Toimintaperiaate
+* Liityntäpalvelin klusterin edessä ulkoinen kuormantasaaja jakaa kuorman klusterin nodeille
+* Kuormatasaaja havaitsee vikaantuneen noden ja lakkaa tarjoamasta sille kuormaa
+* Tarjoaa liityntäpalvelimeen skaalautuvan suorituskyvyn ja vikasietoisuuden
 ![image](../images/external-load-balancer.png)
 
 ---
@@ -103,9 +83,11 @@ template: sininen-palkki
 
 # Toimintaperiaate
 * Klusteriin kuuluu n kappaletta nodeja
-* Kaikki palvelevat aktiivisesti asiakkaita (ei hot standby)
-* Ulkomaailma näkee nämä yhtenä nodena
+* Kaikki nodet palvelevat aktiivisesti asiakkaita (ei hot standby)
+* Ulkomaailma näkee nämä yhtenä liityntäpalvelimena
 * Yksi node on konfiguraation suhteen master, muut slaveja
+* Konfiguraatiomuutokset tehdään masterille, josta ne päivittyvät hetken viiveellä slaveille
+* Nodet hakevat itsenäisesti OCSP-vastauksia ja keskuskonfiguraatiota
 * Väylässä on siis virallisesti yksi liityntäpalvelin (master) ja klusterin muut nodet teeskentelevät olevansa se
 
 ---
@@ -116,8 +98,7 @@ template: sininen-palkki
 * Konfiguraatiotietokanta on klusteroitu
   * PostgreSQL streaming replication (hot standby)
 * Konfiguraatiotiedostot kopioidaan masterilta slaveille
-  * Rsync+ssh
-  * Ajastetusti
+  * Ajastettu rsync+ssh
 * Slaveilla
   * On read-only käyttäjä
   * Tai ei ole ollenkaan käyttöliittymää
@@ -128,11 +109,11 @@ template: sininen-palkki
 
 template: sininen-palkki
 
-# Ulkoisen klusteroinnin käyttöönotto
+# Ulkoisen kuormantasaajan käyttöönotto
 * Asennus
-   * Ansible
-   * Asennus käsin https://github.com/vrk-kpa/X-Road/blob/PVAYLADEV-698-feature-load-balancer-install-instructions/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md
-* Varsinainen kuormanjakaja (ELB, F5, nginx...) out of scope
-* Konfigurointi tehdään master nodelle
-* Konfiguraatiomuutokset päivittyvät masteriin, josta ne päivittyvät slave-koneille viiveellä
-   * klusteri hetken epäkonsistentti
+  * Ansible https://github.com/ria-ee/X-Road/blob/develop/ansible/ss_cluster/README.md
+  * Asennus käsin https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md
+* Varsinainen kuormanjakaja voi olla mikä tahansa, joka tukee HTTP health checkiä ja kuormantasausta TCP-tasolla
+  * Esim. AWS ELB, F5, haproxy, nginx
+* Mahdollista käyttää automaattista PIN-koodin syöttöä (xroad-autologin)
+  * Tietoturva huomioitava
