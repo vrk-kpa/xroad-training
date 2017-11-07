@@ -46,11 +46,12 @@ class: split-55
 .column[
 1. Lähetä rekisteröintipyyntö esuomi.fi-sivulta löytyvällä lomakkeella (samalla hyväksyt käyttöehdot) 
     - FI-TEST ja FI-ympäristöt: Liitä lomakkeen mukaan täytetyt autentikointi- ja allekirjoitusvarmennehakemukset
-2. Saat kuittauksen ja konfiguraatioankkurin palveluväylän ylläpidolta, jonka jälkeen voit aloittaa liityntäpalvelimen asennukset
-3. Asennusten jälkeen voit lähteä välittömästi testaamaan yhteyksien toimivuutta ja mahdollisia palveluja
-4. Palvelun tarjoajille viimeinen vaihe liitymisen jälkeen on liityntäkatalogitietojen täyttäminen 
+2. Ylläpito hyväksyy liittymisen ja lähettää konfiguraatioankkurin - asennukset voidaan aloittaa
+3. Asennusten jälkeen voit lähteä välittömästi testaamaan yhteyksiä ja palveluja
+4. Palvelun tarjoajien: liityntäkatalogitietojen täyttäminen 
 ]
 .column[![](../images/liity.png)]
+
 
 ---
 
@@ -58,12 +59,10 @@ template: sininen-palkki
 
 # Liityntäkatalogi
 
-- https://liityntakatalogi.suomi.fi/
 - Hakemisto Suomi.fi-palveluväylän (FI-ympäristön) tarjottavista palveluista ja lista liittyneistä organisaatioista
 - Tarkoituksena on helpottaa eri palveluntarjoajien palveluväyläympäristöön lisättyjen palveluiden löytämistä 
-- Liittynyt organisaatio täyttää puuttuvat tiedot, kun palvelu on saatu tuotua tuotantoympäristöön. Tekniset kuvaukset haetaan automaattisesti.
-
-- Myös testiympäristölle on olemassa oma epävirallinen ympäristö (kehityskäytössä): https://liityntakatalogi.qa.suomi.fi/fi/ 
+- Liittynyt organisaatio täyttää puuttuvat hallinnolliset kuvaukset, kun palvelu on lopulta saatu tuotantoympäristöön 
+- Tekniset kuvaukset rajapinnoista haetaan katalogiin automaattisesti
 
 ---
 
@@ -71,9 +70,9 @@ template: sininen-palkki
 
 # Liityntäkatalogi 
 
-- https://liityntakatalogi.suomi.fi/ 
-    - Hallinnolliset kuvaukset
-    - Tekniset rajapintakuvaukset 
+- Tuotantoympäristö (FI) https://liityntakatalogi.suomi.fi/ 
+
+- Epävirallinen(!) testiympäristön katalogi (FI-TEST): https://liityntakatalogi.qa.suomi.fi/fi/ 
 
 ---
 
@@ -83,12 +82,12 @@ template: sininen-palkki
 
 - https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/
 - Tuotantoympäristöön liittyminen edellyttää testiympäristöön liittymistä 
-- Oman järjestelmän integraatiotyön suunnittelu ja toteutus kannattaa myös aloittaa 
-    - kutsuttava palvelu käyttö / tarjottava palvelun rajapinta
+- Oman järjestelmän integraatiotyön suunnittelu (sovitinpalvelu) ja toteutus kannattaa myös aloittaa 
+    - kutsuttava palvelu käyttö (consumer) / tarjottava palvelun rajapinta (provider)
 - Liityntäpalvelimen asennukseen voi kulua jopa kuukausi (FI-TEST ja FI-ympäristöt)
     - Varmennepalvelun ruuhkat aiheuttavat viivettä 
 - Kehitysympäristöön liittyminen nopeaa, koska sitä varten ei tarvitse täyttää virallisia varmennehakemuslomakkeita
-    - Hyvä ja kevyt vaihtoehto, jos ei ole kiire tuotantoon siirtymisessä
+    - Kevyt vaihtoehto, jos ei ole kiire tuotantoon siirtymisessä
 
 ---
 
@@ -102,16 +101,16 @@ template: sininen-palkki
 template: sininen-palkki
 
 # Yhteystiedot
+  
+- palveluvayla@palveluvayla.fi 
+    - Palveluväyläympäristöjen ylläpitäjät
+    - Yhteyspiste liityntäpalvelin asennuksen ja konfiguroinnin aikana 
+        - Yhteydenpitoa tarvitaan mm. rekisteröintien ja varmennekäsittelyjen aikana 
 
 - kapa-asiakaspalvelu@vrk.fi 
     - Auttaa yleisissä hallinnollisissa asioissa
       - Auttaa etsimään vastaavat henkilöt mistä tahansa Suomi.fi-palvelusta
     - esim. KaPa-lain velvoittavuuskysymykset
-    
-- palveluvayla@palveluvayla.fi 
-    - Palveluväyläympäristöjen ylläpitäjät
-    - Yhteyspiste liityntäpalvelin asennuksen ja konfiguroinnin aikana 
-        - Yhteydenpitoa tarvitaan mm. rekisteröintien ja varmennekäsittelyjen aikana 
         
 ---
 template: header
