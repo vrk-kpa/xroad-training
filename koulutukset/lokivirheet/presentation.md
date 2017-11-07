@@ -28,15 +28,18 @@ template: sininen-palkki
 # Lokivirheitä
 
 - configuration_client.log
+  + merkintöjä liityntäpalvelimelle päivitettyjen global conf-konfiguraatiotietojen hausta keskuspalvelimelta
 - proxy.log
+  + tekninen häiriöloki, sanomaliikennekomponentin lokitiedot
 - signer.log
-- [operointiohjeet](https://confluence.csc.fi/display/KAPAJULKHAL/Security+Server+Log+Monitoring) listaavat muutamia valvottavia virhetilanteita  
+  + avainten hallinnasta ja mm. sanomien allekirjoituksesta sekä allekirjoitusten verifioinnista vastaavan komponentin lokitiedot
 
 ---
 
 template: sininen-palkki
 
 # configuration_client.log
+Log file: /var/log/xroad/configuration_client.log
 
 ```log
 11:01:00 [QuartzScheduler_Worker-2] ERROR e.r.x.c.c.g.ConfigurationClient - Failed to download configuration from any configuration location:
@@ -53,6 +56,7 @@ template: sininen-palkki
 template: sininen-palkki
 
 # Proxy.log virheet
+Log file: /var/log/xroad/proxy.log
 
 - Erilaisia virhekoodeja on yli 100: [ErrorCodes.java](https://github.com/vrk-kpa/X-Road/blob/develop/src/common-util/src/main/java/ee/ria/xroad/common/ErrorCodes.java)
 - Lokeihin tulostuvissa – ja vastausviestissä näkyvissä – virheissä voi näkyä virhekooditus, esimerkiksi Server.ClientProxy.NetworkError
@@ -92,7 +96,7 @@ template: sininen-palkki
 ```
 --
 
-* Producer-liityntäpalvelimen PIN ei ollut syötetty  
+* Provider-liityntäpalvelimen PIN ei ollut syötetty  
 
 ---
 
@@ -130,21 +134,44 @@ template: sininen-palkki
 
 template: sininen-palkki
 
-# proxy.log
+# proxy.log esimerkkejä
 
 ```log
    2016-04-20 11:46:32,430 [Proxy-akka.actor.default-dispatcher-81] ERROR e.r.x.p.messagelog.TimestamperWorker - Timestamper failed for message records [<record id>, ...]: Failed to get time stamp from any time-stamping providers
 ```
+```log
+   2016-04-20 11:46:32,430 [Proxy-akka.actor.default-dispatcher-81] ERROR e.r.x.p.m.AbstractTimestampRequest - Failed to get time stamp from <timestamp provider url>
+```
 --
-* Tämä ja muutamat muut “timestamper failed” virheet voivat johtua siitä, että yhteyttä aikaleimapalveluun ei saatu
+* Nämä ja muutamat muut “timestamper failed” virheet voivat johtua siitä, että yhteyttä aikaleimapalveluun ei saatu
 * Verkko & palomuurit?
-* Viestinvälitys lakkaa 4 tunnin kuluessa
+* Viestinvälitys lakkaa 5 tunnin kuluessa
+
+---
+
+template: sininen-palkki
+
+# proxy.log esimerkkejä
+
+```log
+   2016-04-20 13:38:34,067 [qtp2082353865-104] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error ee.ria.xroad.common.CodedException: LoggingFailed.TimestamperFailed: Cannot time-stamp messages
+```
+```log
+   2016-04-27 11:27:59,215 [qtp878598679-80] ERROR e.r.x.p.s.ServerProxyHandler - Request processing error ee.ria.xroad.common.CodedException: Server.ServerProxy.LoggingFailed.TimestamperFailed: Cannot time-stamp messages
+```
+--
+* Liityntäpalvelin ei ole saanut aikaleimattua sanomia 5 tuntiin
+* Viestinvälitys on lakannut
+* Viestejä yritetään aikaleimata minuutin välein -> jos onnistuu niin viestinvälitys lähtee toimimaan uudestaan
+* Keskusympäristön aikaleimapalvelu on nurin? Verkko-ongelmia?
 
 ---
 
 template: sininen-palkki
 
 # signer.log
+
+Log file: /var/log/xroad/signer.log
 
 ```log
 19:14:20 INFO  [Signer-akka.actor.default-dispatcher-2403] e.r.x.c.c.g.ConfigurationDirectoryV2 -
@@ -188,8 +215,11 @@ template: sininen-palkki
 2016-04-20 11:12:31,968 ERROR [Signer-akka.actor.default-dispatcher-2] e.r.x.s.certmanager.OcspClientWorker - Error when querying certificate '<certificate serial number>'
 org.bouncycastle.cert.ocsp.OCSPException: Unable to get valid OCSP response from any responders
 ```
+```log
+2016-04-20 11:12:31,967 ERROR [Signer-akka.actor.default-dispatcher-2] e.r.x.signer.certmanager.OcspClient - Unable to fetch response from responder at <OCSP responder address>
+```
 --
-* Tämä ja muutamat muut virheet “OCSP” avainsanalla voivat johtua siitä, että yhteyttä OCSP-responderiin ei saatu
+* Nämä ja muutamat muut virheet “OCSP” avainsanalla voivat johtua siitä, että yhteyttä OCSP-responderiin ei saatu
 * Verkko & palomuurit?
 
 ---
@@ -202,9 +232,9 @@ template: header
 
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 1/3
+# Allekirjoitusvarmenne ei kunnossa 1/5
 
-* Producer-liityntäpalvelimella allekirjoitusvarmenneongelma.
+* Provider-liityntäpalvelimella allekirjoitusvarmenneongelma.
 
 ```log
 2017-04-07 13:47:16,891 [qtp2129844134-1885] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
@@ -213,16 +243,15 @@ ee.ria.xroad.common.CodedException$Fault: Server.ServerProxy.ServiceFailed.Canno
 	at ee.ria.xroad.common.message.SoapFault.toCodedException(SoapFault.java:127) ~[proxy-1.0.jar:na]
 
 ```
---
 * Consumer / proxy.log
 
 ---
 
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 2/3
+# Allekirjoitusvarmenne ei kunnossa 2/5
 
-* Producer-liityntäpalvelimen allekirjoitusvarmenneongelma.
+* Provider-liityntäpalvelimen allekirjoitusvarmenneongelma.
 
 ```log
 2017-04-07 13:47:16,889 [qtp1369468094-1375] ERROR e.r.x.p.s.ServerProxyHandler - Request processing error (a3e009b2-ea7a-4678-809f-aaa2292477ea)
@@ -230,16 +259,15 @@ ee.ria.xroad.common.CodedException: Server.ServerProxy.ServiceFailed.CannotCreat
 	at ee.ria.xroad.proxy.conf.CachingKeyConfImpl.getSigningCtx(CachingKeyConfImpl.java:84) ~[proxy-1.0.jar:na]
 	at ee.ria.xroad.proxy.conf.KeyConf.getSigningCtx(KeyConf.java:122) ~[proxy-1.0.jar:na]
 ```
---
-* Producer / proxy.log
+* Provider / proxy.log
 
 ---
 
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 3/3
+# Allekirjoitusvarmenne ei kunnossa 3/5
 
-* Producer-liityntäpalvelimen allekirjoitusvarmenneongelma.
+* Provider-liityntäpalvelimen allekirjoitusvarmenneongelma.
 
 ```log
 2017-04-07 13:47:16,872 ERROR [Signer-akka.actor.default-dispatcher-3] e.r.x.s.p.AbstractRequestHandler - Error in request handler
@@ -247,8 +275,75 @@ ee.ria.xroad.common.CodedException: UnknownMember: Could not find any certificat
 	at ee.ria.xroad.common.CodedException.tr(CodedException.java:173) ~[signer-1.0.jar:na]
 	at ee.ria.xroad.signer.protocol.handler.GetMemberSigningInfoRequestHandler.handle(GetMemberSigningInfoRequestHandler.java:68) ~[signer-1.0.jar:na]
 ```
---
-* Producer / signer.log
+
+* Provider / signer.log
+
+---
+
+template: sininen-palkki
+
+# Allekirjoitusvarmenne ei kunnossa 4/5
+
+* Consumer-liityntäpalvelimen allekirjoitusvarmenneongelma.
+
+```log
+2016-04-20 12:22:34,950 [qtp1446511153-75] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
+ee.ria.xroad.common.CodedException: CannotCreateSignature: Failed to get signing info for member 'SUBSYSTEM:FI/GOV/JH-DEV2/SS1': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:FI/GOV/JH-DEV2/SS1'
+```
+
+* Consumer / signer.log
+
+---
+
+template: sininen-palkki
+
+# Allekirjoitusvarmenne ei kunnossa 5/5
+
+* Consumer-liityntäpalvelimen allekirjoitusvarmenneongelma.
+
+```log
+2016-04-20 11:46:20,828 [qtp26059997-224] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
+ee.ria.xroad.proxy.clientproxy.ClientException: Client.CannotCreateSignature: Could not get OCSP responses for certificates ([641969ac5b023e0a4f5e9ebafe75e4aeb4dacdec])'
+```
+
+* Consumer / signer.log
+
+---
+template: sininen-palkki
+
+# Autentikointivarmenne ei kunnossa 1/2
+
+* liityntäpalvelimella (Provider tai Consumer) autentikointivarmenneongelma.
+
+```log
+2016-04-20 11:14:07,427 [qtp26059997-77] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
+ee.ria.xroad.common.CodedException: SslAuthenticationFailed: Security server has no valid authentication certificate
+```
+```log
+2016-04-20 11:14:07,424 [qtp26059997-77] ERROR e.r.x.proxy.conf.CachingKeyConfImpl - Failed to get authentication key
+ee.ria.xroad.common.CodedException: Signer.KeyNotFound: Could not find active authentication key for security server 'SERVER:FI/GOV/JH-DEV/jh-dev'
+```
+
+* proxy.log
+* Liityntäpalvelimen autentikointivarmenne ei ole kunnossa validia autentikointivarmennetta
+* Varmennetta ei ole? Varmenne ei voimassa? 
+
+---
+
+template: sininen-palkki
+
+# Autentikointivarmenne ei kunnossa 2/2
+
+* Provider-liityntäpalvelimella autentikointivarmenneongelma.
+
+```log
+2016-04-20 14:10:05,315 [qtp2082353865-306] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
+ee.ria.xroad.common.CodedException: SslAuthenticationFailed: Service provider did not send correct authentication certificate
+```
+
+* Consumer / proxy.log
+* Provider liityntäpalvelin ei lähettänyt validia autentikointivarmennetta
+* Varmenne ei voimassa?
 
 ---
 template: header
