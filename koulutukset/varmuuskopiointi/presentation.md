@@ -55,7 +55,7 @@ template: sininen-palkki
 - Backup kannattaa tehdä oletuskansioon niin se näkyy myös käyttöliittymässä
 
 ```bash
-$ /usr/share/xroad/scripts/backup_xroad_proxy_confugiration.sh -s AA/GOV/TS1=WNER/TS1 -f /var/lib/xroad/backup/mybackup.tar
+$ /usr/share/xroad/scripts/backup_xroad_proxy_configuration.sh -s AA/GOV/TS1=WNER/TS1 -f /var/lib/xroad/backup/mybackup.tar
 ```
 
 ---
