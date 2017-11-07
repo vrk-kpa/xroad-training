@@ -47,7 +47,7 @@ class: split-55
 1. Lähetä rekisteröintipyyntö esuomi.fi-sivulta löytyvällä lomakkeella 
     - FI-TEST ja FI-ympäristöt: Liitä lomakkeen mukaan täytetyt autentikointi- ja allekirjoitusvarmennehakemukset
 2. Saat kuittauksen ja konfiguraatioankkurin palveluväylän ylläpidolta, jonka jälkeen voit aloittaa liityntäpalvelimen asennukset
-3. Asennusten jälkeen voit lähteä välittömästi testaamaan testaamaan yhteyksien ja mahdollisia palveluja
+3. Asennusten jälkeen voit lähteä välittömästi testaamaan yhteyksien ja mahdollisia palveluja
 4. Palvelun tarjoajille viimeinen vaihe liitymisen jälkeen on liityntäkatalogitietojen täyttäminen 
 ]
 .column[![](../images/liity.png)]
