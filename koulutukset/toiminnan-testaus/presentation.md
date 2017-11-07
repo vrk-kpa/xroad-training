@@ -23,12 +23,6 @@ template: header
 
 ---
 
-template: header
-
-# Admin-käyttöliittymä
-
----
-
 template: sininen-palkki
 
 # Admin-käyttöliittymä
@@ -327,8 +321,9 @@ template: sininen-palkki
 
 # Kuormantasauksen healthcheck
 
-- Tulossa Q2/2017
+- Mukana 6.16.0 versiosta lähtien
 - Healthcheck palauttaa HTTP 200 OK viestin kun liityntäpalvelin on toimintakuntoinen, ja HTTP 500 mikäli ei
+- Erikseen konfiguroitava käyttöön, oletuksena pois päältä
 
 ```bash
 $ curl -i localhost:5588
@@ -345,11 +340,12 @@ template: sininen-palkki
 
 # Aiemmin käsiteltyä toiminnan testausta
 
+- Oikeat paketit asennettu?
 - Prosessit käynnissä?
 - Portit kuuntelevat?
 - Tekstilokeihin tulostuu tavaraa
 - Tekstilokeissa ei “epänormaaleja” virheilmoituksia
-- Valvonta
+- Alustavalvonta
 
 ---
 template: header
