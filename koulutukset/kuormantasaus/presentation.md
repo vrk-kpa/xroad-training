@@ -117,3 +117,9 @@ template: sininen-palkki
   * Esim. AWS ELB, F5, haproxy, nginx
 * Mahdollista käyttää automaattista PIN-koodin syöttöä (xroad-autologin)
   * Tietoturva huomioitava
+
+---
+
+template: header
+
+# Kysymyksiä?
