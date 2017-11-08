@@ -65,7 +65,7 @@ template: sininen-palkki
     + Liityntäpalvelin ei tietoturvasyistä enää palauta alkuperäisessä WSDL:ssä olevaa palvelun endpoint locationia kun metapalvelulta haetaan WSDL
 - Paikallisen X-Roadin ja kehitysympäristön pystyttämiseen parannusta
     + [X-Road installation instructions](https://github.com/ria-ee/X-Road/blob/develop/ansible/README.md) ja [Build environment and local X-Road instances](https://github.com/ria-ee/X-Road/blob/develop/src/Vagrant.md)
-- Liityntäpalvelimen vanhentuvien varmenteiden uusimiseeen on tehty ohje
+- Liityntäpalvelimen vanhentuvien varmenteiden uusimiseen on tehty ohje
     + [Liityntäpalvelimen vanhenevien varmenteiden uusiminen](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-vanhenevien-varmenteiden-uusiminen/)
     + Liityntäpalvelinsertifikaattien uusimiseen lomake
         * [Liityntäpalvelinsertifikaattien uusiminen](https://esuomi.fi/palveluntarjoajille/palveluvayla/liityntapalvelinsertifikaattien-uusiminen/)

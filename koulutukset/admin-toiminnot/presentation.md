@@ -63,9 +63,8 @@ template: sininen-palkki
 |nginx               |Edustapalvelin                   |`/var/log/nginx/`                          |
 |postgresql          |Tietokantapalvelin               |`/var/log/postgresql/`                     |
 
-* Tekstilokeihin kirjoitettavan data voidaan asettaa eri tasoisiksi 
-    ERROR, WARN, INFO (oletuksena), DEBUG, OFF
-    * X-Road-lokien muutokset tehdään /etc/xroad/conf.d logback.xml-tiedostoille tai local.ini-tiedostoon
+* Tekstilokeihin kirjoitettavan data voidaan asettaa eri tasoisiksi ERROR, WARN, INFO (oletuksena), DEBUG, OFF
+ -> muutokset tehdään /etc/xroad/conf.d logback.xml-tiedostoille tai local.ini-tiedostoon
 
 ---
 

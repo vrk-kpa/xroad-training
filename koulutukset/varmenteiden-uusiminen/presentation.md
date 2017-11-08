@@ -29,7 +29,7 @@ template: sininen-palkki
 
 - Varmenteet ovat voimassa 2 vuotta (kehitys-, testi- ja tuotantoympärissä)
    - Ylläpito saattaa asiasta huomauttaa
-   - Hyvä kuitenkin olla mahdollisesti lähestyvästä expireoitumispäivästä, jotta niihin ehditään puuttua ja vältytään käyttökatkolta
+   - Hyvä kuitenkin olla tietoinen mahdollisesti lähestyvästä expireoitumispäivästä, jotta niihin ehditään puuttua ja vältytään käyttökatkolta
 ![vanheminen](../images/varmenteiden-vanheneminen.png)
 
 ---
@@ -52,6 +52,7 @@ class: split-70
 # Varmenteiden uusiminen (2/2)
 
 .column[
+- Importoidaan allekirjoitetut varmenteet
 - TÄRKEÄÄ! Antakaa uusien varmenteiden olla rinnakkain aktiivisina vanhenemassa olevien varmenteiden kanssa ainakin vuorokauden ajan
    - Status pitäisi olla *registered* ja OCSP response *good*
    - Tieto uudesta varmenteesta ehtii leviämään palveluväyläympäristön sisällä
