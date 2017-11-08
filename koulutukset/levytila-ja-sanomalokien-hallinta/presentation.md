@@ -19,7 +19,7 @@ class: center, middle, sininen
 ---
 
 template: header
-# Sanomalokien hallinta
+# Levytila ja sanomalokien hallinta
 
 ---
 
