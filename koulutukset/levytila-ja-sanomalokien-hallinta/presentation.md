@@ -43,10 +43,11 @@ template: sininen-palkki
 #  Liityntäpalvelimen levytila
 
 * Liityntäpalvelimella levytilaa tarvitsevat pääasiassa:
-   * Tekstilokit (`var/log/xroad`, ei siivota automaattisesti)
+   * Tekstilokit (`var/log/xroad`, ei siivota automaattisesti). Lokeja kertyy yksi per päivä (100MB kokoraja)
    * Tietokanta (`messagelog` -taulu, automaattisesti siivotaan oletuksena yli 30 päivää vanhat)
    * Arkistoidut sanomalokit (`/var/lib/xroad`, ei siivota automaattisesti)
-   * SOAP-viestin liitetiedostot (sanoma käsittelyn ajan)
+   * SOAP-viestin liitetiedostot: tallentuvat väliaikaisesti liityntäpalvelimen levylle
+       * Levytila asettaa maksimin käsiteltävien liitteiden koolle
 * Liityntäpalvelimen tarvitseman levytilan arviointi: [esuomi.fi liityntäpalvelimen tekniset vaatimukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/
 )
 

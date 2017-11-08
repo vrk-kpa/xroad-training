@@ -20,7 +20,7 @@ class: valkoinen
 
 template: header
 
-# Admin-toiminnot - Liityntäpalvelimen ylläpito ja valvonta
+# Liityntäpalvelimen ylläpito ja valvonta
 
 ---
 
@@ -30,7 +30,6 @@ template: sininen-palkki
 
 * Prosessit
 * Portit
-* Levytilan vapauttaminen
 * Konfiguraatioparametrit
 
 ---
@@ -55,9 +54,18 @@ template: sininen-palkki
 
 # Liityntäpalvelimen prosessit
 
-![lipan-prosessit](../images/lipan-prosessit.png)
+|Palvelu             |Tarkoitus                        |Loki                                       |
+|:-------------------|:--------------------------------|:------------------------------------------|
+|xroad-confclient    |Keskuskonfiguraation hakeminen   | `/var/log/xroad/configuration_client.log` |
+|xroad-jetty (Ubuntu)<br>xroad-jetty9 (RHEL)|Käyttöliittymä |`/var/log/xroad/jetty/jetty.log`      |
+|xroad-proxy         |Viestinvälitys                   |`/var/log/xroad/proxy.log`                 |
+|xroad-signer        |Avainten ja varmenteiden hallinta|`/var/log/xroad/signer.log`                |
+|nginx               |Edustapalvelin                   |`/var/log/nginx/`                          |
+|postgresql          |Tietokantapalvelin               |`/var/log/postgresql/`                     |
 
-* Lokeihin kirjoitettavan datan yksityiskohtien määrää voidaan asettaa eri tasoisiksi esim. DEBUG, INFO ja OFF.
+* Tekstilokeihin kirjoitettavan data voidaan asettaa eri tasoisiksi 
+    ERROR, WARN, INFO (oletuksena), DEBUG, OFF
+    * X-Road-lokien muutokset tehdään /etc/xroad/conf.d logback.xml-tiedostoille tai local.ini-tiedostoon
 
 ---
 
@@ -69,24 +77,13 @@ template: valkoinen
 
 template: sininen-palkki
 
-# Levytila
-
-* Kaikki viestit, sekä niiden tiivisteet ja allekirjoitukset tallentuvat paikalliseen
-tietokantaan jälkikäteistä todennusta varten.
-    * SOAP-viestin header-osuus tallennetaan aina
-    * SOAP-viestin body-osuutta ei oletuksena tallenneta, mutta se on konfiguroitavissa
-* Kannasta niitä puretaan zip-tiedostoihin ajastetusti /var/lib/xroad -hakemistoon
-* Zip-tiedostot täyttävät levyn, ellei niitä siirretä muualle tai poisteta
-* Liitetiedostot tallentuvat väliaikaisesti liityntäpalvelimen levylle
-    * Levytila asettaa maksimin käsiteltävien liitteiden koolle
-
----
-
-template: sininen-palkki
-
 # Konfiguraatioparametrit
 
 * Parametreilla voidaan säätää esimerkiksi käytettyjä tallennushakemistoja ja ajastuksia mm. messagelogien purkamiseen kannasta
-    * Parametrien säätö tehdään ”käsin” konsolin kautta tiedostoa muokkaamalla, ei käyttöliittymän kautta.
+    * Parametrien säätö tehdään käsin konsolin kautta tiedostoa muokkaamalla, ei käyttöliittymän kautta.
 * Oletusarvoisesti parametrit ovat hakemistossa /etc/xroad/conf.d
-    * Paikalliset muutokset tehdään local.ini -tiedostoon, joka ylikirjoittaa oletusasetukset  
+    * Paikalliset muutokset tehdään local.ini -tiedostoon, joka ylikirjoittaa oletusasetukset
+
+Kaikki säädettävissä olevat järjestelmäparametrit löytyvät: https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/ug-syspar_x-road_v6_system_parameters.md
+
+* Huom: oletusparametrien arvoja ei kannata vaihtaa, jollei tiedä mitä on tekemässä
