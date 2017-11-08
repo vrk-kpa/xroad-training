@@ -27,9 +27,9 @@ template: sininen-palkki
 
 # Varmenteiden vanheneminen
 
-- Varmenteet ovat voimassa 2 vuotta (testi- ja tuotantoympäristö)
-   - Kehitysympäristössä?
-   - Pro tip: Kalenteriin merkintä lähestyvästä expires-päivämäärästä, jotta ne ehditään uusia ja näin vältytään käyttökatkolta
+- Varmenteet ovat voimassa 2 vuotta (kehitys-, testi- ja tuotantoympärissä)
+   - Ylläpito saattaa asiasta huomauttaa
+   - Hyvä kuitenkin olla mahdollisesti lähestyvästä expireoitumispäivästä, jotta niihin ehditään puuttua ja vältytään käyttökatkolta
 ![vanheminen](../images/varmenteiden-vanheneminen.png)
 
 ---
@@ -38,7 +38,8 @@ template: sininen-palkki
 
 # Varmenteiden uusiminen (1/2)
 
-- Luodaan luoduille palvelin- ja allekirjoitusavaimille uudet allekirjoituspyynnöt – muuten edetään samaan tyyliin kuin normaalissa allekirjoituspyynnön luomisessa
+- Hyvin samanlainen prosessi mitä asennusvaiheessa (hallintakäyttöliittymässä)
+- Luodaan luoduille palvelin- ja allekirjoitusavaimille uudet allekirjoituspyynnöt
    - Suosikaa PEM formaattia allekirjoituspyynnöissä (VRK Varmennepalvelun toive)
    - Lähetetään ylläpidolle allekirjoitettavaksi: palveluvayla@palveluvayla.fi
 ![luominen](../images/varmenteen-luominen.png)
@@ -65,8 +66,7 @@ template: sininen-palkki
 
 # Uusien varmenteiden hankkimen
 
-- Testi- ja tuotantoympäristössä organisaation täytettävä uusittavat hakemukset eSuomen sivuilta
-   - Lähitulevaisuudessa Suomi.fi-palveluiden palveluhallintasivuilta: https://palveluhallinta.suomi.fi/fi
+- Testi- ja tuotantoympäristössä organisaation täytettävä uusittavat hakemukset eSuomen sivuilta (rasti ruutuun)
 
 ![varmenne](../images/varmenne-lomake.png)
 
@@ -92,7 +92,7 @@ template: sininen-palkki
 
 # Miksi asiakkaan tarvitsee toimia välikätenä?
 
-- Varmenteiden tilaamiseen tarvitaan toimija, jolla on organisaation nimenkirjoitusoikeus
+- Varmenteiden tilaamista varten tarvitaan toimija, jolla on organisaation nimenkirjoitusoikeus
 - Mikäli varmenteita tilaa henkilö, jolla ei ole organisaation nimenkirjoitusoikeutta, tulee olla valtakirja. Valtakirjaksi riittää yleensä yksinkertainen
    - ”Valtuutamme Nano Nano Organisaation X edustajana hakemaan palvelinvarmenteita Väestörekisterikeskukselta organisaatio.fi – verkkotunnukselle.” (+Allekirjoittajana organisaation nimenkirjoitusoikeuden haltija)
 
