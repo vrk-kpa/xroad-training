@@ -240,6 +240,41 @@ $ curl --header "content-type: text/xml" http://localhost -d @request.xml
 template: valkoinen
 class: smaller-code-font
 
+Request.xml -file
+```xml
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xro="http://x-road.eu/xsd/xroad.xsd"
+        xmlns:iden="http://x-road.eu/xsd/identifiers"
+        xmlns:xrcl="http://xroad.vrk.fi/xroad-catalog-collector">
+    <soapenv:Header>
+        <xro:protocolVersion>4.x</xro:protocolVersion>
+        <xro:id>dummy-ID11234</xro:id>
+        <xro:userId>dummy-EE1234567890</xro:userId>
+        <xro:client iden:objectType="SUBSYSTEM">
+            <iden:xRoadInstance>CADEV</iden:xRoadInstance>
+            <iden:memberClass>GOV</iden:memberClass>
+            <iden:memberCode>2077-1</iden:memberCode>
+            <iden:subsystemCode>SS2077</iden:subsystemCode>
+        </xro:client>
+        <xro:service iden:objectType="SERVICE">
+            <iden:xRoadInstance>CADEV</iden:xRoadInstance>
+            <iden:memberClass>GOV</iden:memberClass>
+            <iden:memberCode>1234510-926</iden:memberCode>
+            <iden:subsystemCode>GUITEST26</iden:subsystemCode>
+            <iden:serviceCode>listMethods</iden:serviceCode>
+        </xro:service>
+    </soapenv:Header>
+    <soapenv:Body>
+        <listMethods/>
+    </soapenv:Body>
+</soapenv:Envelope>
+```
+---
+
+template: valkoinen
+class: smaller-code-font
+
 Vastaus curl -komentoon:
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:iden="http://x-road.eu/xsd/identifiers" xmlns:xro="http://x-road.eu/xsd/xroad.xsd" xmlns:xro1="http://xroad.vrk.fi/xroad-catalog-lister">
@@ -272,42 +307,6 @@ Vastaus curl -komentoon:
 
 ---
 
-template: valkoinen
-class: smaller-code-font
-
-Request.xml -file
-```xml
-<soapenv:Envelope
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-        xmlns:xro="http://x-road.eu/xsd/xroad.xsd"
-        xmlns:iden="http://x-road.eu/xsd/identifiers"
-        xmlns:xrcl="http://xroad.vrk.fi/xroad-catalog-collector">
-    <soapenv:Header>
-        <xro:protocolVersion>4.x</xro:protocolVersion>
-        <xro:id>dummy-ID11234</xro:id>
-        <xro:userId>dummy-EE1234567890</xro:userId>
-        <xro:client iden:objectType="SUBSYSTEM">
-            <iden:xRoadInstance>CADEV</iden:xRoadInstance>
-            <iden:memberClass>GOV</iden:memberClass>
-            <iden:memberCode>2077-1</iden:memberCode>
-            <iden:subsystemCode>SS2077</iden:subsystemCode>
-        </xro:client>
-        <xro:service iden:objectType="SERVICE">
-            <iden:xRoadInstance>CADEV</iden:xRoadInstance>
-            <iden:memberClass>GOV</iden:memberClass>
-            <iden:memberCode>1234510-926</iden:memberCode>
-            <iden:subsystemCode>GUITEST26</iden:subsystemCode>
-            <iden:serviceCode>listMethods</iden:serviceCode>
-        </xro:service>
-    </soapenv:Header>
-    <soapenv:Body>
-        <listMethods/>
-    </soapenv:Body>
-</soapenv:Envelope>
-```
-
----
-
 template: sininen-palkki
 
 # Viestinvälityksen testaaminen
@@ -333,6 +332,8 @@ Server: Jetty(8.y.z-SNAPSHOT)
 
 Fetching health check response timed out for: Authentication key OCSP status
 ```
+
+Lisätietoa ulkoisen kuormantasauksen dokumentaatiossa: https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md#34-health-check-service-configuration
 
 ---
 
