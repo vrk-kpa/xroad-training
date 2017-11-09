@@ -44,12 +44,12 @@ template: sininen-palkki
 # Federointi
 
 Tarkoittaa X-Road ympäristön luottamusverkon laajentamista toiseen X-Road ympäristöön ts. tuki sanomienvälitykseen Suomi.fi-palveluväylän ja Viron X-tee –ympäristön välillä 
-- FI-DEV ja FI-TEST väylät on liitetty yhteen, FI (tuotanto)-ympäristössä on tekninen valmius avata federointin heti kun ensimmäiset hyödyntäjät haluavat sitä käyttää
+- FI-DEV ja FI-TEST väylät on liitetty yhteen, FI (tuotanto)-ympäristössä on tekninen valmius avata federointi heti kun ensimmäiset hyödyntäjät haluavat sitä käyttää
 - Liittyjän kannalta huomioitava palomuuriavaukset:
-    + Viron "vastapuolen" konfigurointipalvelimen IP-osoitteeseen:
-        * Portit 5500 ja 5577  
     + Viron keskuskonfiguraatiota jakavan (Suomen keskusympäristön) konfigurointipalvelimen IP-osoitteeseen:
         * 193.166.187.200 porttiin 80
+    + Viron "vastapuolen" liityntäpalvelimen IP-osoitteeseen:
+        * Portit 5500 ja 5577  
 - Federointi on jatkossa oletusarvoisesti pois käytöstä yksittäisillä palveluväylään liitetyillä liityntäpalvelimilla
     + Konfigurointi: [Security Server User Guide - Federation](https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/ug-ss_x-road_6_security_server_user_guide.md#18-federation)
 
@@ -59,7 +59,7 @@ template: sininen-palkki
 
 # Parannuksia HA-tukeen
 
-- Halutaan toipua nopeammin tietyntyyppisistä verkko-ongelmista (6.9 -versiossa)
+- Halutaan toipua nopeammin tietyntyyppisistä verkko-ongelmista (esim. yhteys halutaan muodostaa nopeammin vara-liityntäpalvelimeen)
 - Selvitetään round-robin -tekniikan käyttöä (Arvio H2/2017)
     + Tällä hetkellä työn alla Suomen kehitystiimissä
 - Lisätietoa: 
@@ -130,7 +130,7 @@ template: sininen-palkki
 # X-Road käyttökokemuksen parantaminen
 
 Erilaisia toimia tulossa X-Roadin käyttö- ja kehittäjäkokemuksen parantamiseksi:
-- X-Roadin ajaminen Docker kontissa
+- X-Roadin ajaminen Docker kontissa (alustavaa selvitystä jo tehty)
 - X-Road tietoisuuden levittäminen
     + tiedon jakaminen avoimemmin
     + tiedon määrän lisääminen
@@ -138,7 +138,6 @@ Erilaisia toimia tulossa X-Roadin käyttö- ja kehittäjäkokemuksen parantamise
 - Palveluväylä meetup loppuvuodesta 2017 
 
 ---
-
 
 template: sininen-palkki
 
