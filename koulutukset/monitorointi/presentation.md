@@ -75,6 +75,7 @@ template: sininen-palkki
 - Muistin määrä (yhteensä / vapaa)
 - CPU-kuorma
 - Avoimien tiedostokahvojen määrä
+- Varmenteiden voimassaoloajat ja tila (enabled/disabled)
 
 ---
 
