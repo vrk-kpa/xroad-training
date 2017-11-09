@@ -222,10 +222,10 @@ template: sininen-palkki
 - **Hallintakäyttöliittymästä:** 
     - Konfiguraatioankkuri
     - PIN-koodin syöttäminen (uutta: Autologin komponentti)
-- Varmenteet
-- Varmuuskopiointi ja palauttaminen
-- Diagnostiikka
-- Alijärjestelmien ja palveluiden lisääminen 
+    -  Varmenteet
+    - Varmuuskopiointi ja palauttaminen
+    - Diagnostiikka
+    - Alijärjestelmien ja palveluiden lisääminen 
 
 ---
 
@@ -246,9 +246,8 @@ template: sininen-palkki
 # Palvelinkapasiteetti
 
 - Suosituksia minimi palvelinkokoonpanoille erilaisissa kuormituksissa 
-esuomi.fi => Tekniset vaatimukset
-[Liityntäpalvelimen tekniset vaatimukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/)
-- Riippuu lopulta käytettävästä palvelusta ja sen käyttäjämääristä millaista alusta kannattaa valita
+esuomi.fi => palveluväylä => tekninen aineisto => [Liityntäpalvelimen tekniset vaatimukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/)
+- Riippuu lopulta käytettävästä palvelusta ja sen käyttäjämääristä millainen alusta kannattaa valita
     - Kysely- ja vastaussanomakoot
     - Käyttäjien (kyselyiden) määrä 
 - Huomioon otettava niiden myötä lokiarkistoinnit (konfiguraatioparametreillä), jottei se häiritsisi muuta toimintaa 
