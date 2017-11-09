@@ -28,7 +28,7 @@ template: sininen-palkki
 # Lokivirheitä
 
 - configuration_client.log
-  + merkintöjä liityntäpalvelimelle päivitettyjen global conf-konfiguraatiotietojen hausta keskuspalvelimelta
+  + merkintöjä liityntäpalvelimelle päivitetyn keskuskonfiguraation hausta keskuspalvelimelta
 - proxy.log
   + tekninen häiriöloki, sanomaliikennekomponentin lokitiedot
 - signer.log
@@ -46,7 +46,7 @@ Log file: /var/log/xroad/configuration_client.log
         location: http://gdev-cs.i.palveluvayla.com/internalconf; error: HttpError: Network is unreachable
         location: http://gdev-cs2.i.palveluvayla.com/internalconf; error: HttpError: Network is unreachable
 ```
-- Globaalin konfiguraation haku epäonnistui
+- Keskuskonfiguraation haku epäonnistui
 - Kertoo osoitteet, mistä hakua yritettiin
 - Verkko & palomuurit?
 - Liityntäpalvelin on kuitenkin käyttökelpoinen keskuskonfiguraation voimassaolon ajan (esim. 72 tuntia)
@@ -75,10 +75,7 @@ template: sininen-palkki
 # Server.ClientProxy.NetworkError
 
 * **Server.ClientProxy** = Component
-   * Client
-   * Server.ClientProxy
-   * Server.ServerProxy
-   * Signer
+  * ClientProxy viittaa consumer-roolissa toimivaan liityntäpalvelimeen ja ServerProxy provider-puoleen
 * **NetworkError** = Error Code
 
 ---
@@ -145,7 +142,7 @@ template: sininen-palkki
 --
 * Nämä ja muutamat muut “timestamper failed” virheet voivat johtua siitä, että yhteyttä aikaleimapalveluun ei saatu
 * Verkko & palomuurit?
-* Viestinvälitys lakkaa 5 tunnin kuluessa
+* Viestinvälitys lakkaa 5 tunnin kuluessa (acceptable-timestamp-failure-period parametri)
 
 ---
 
@@ -179,26 +176,8 @@ Log file: /var/log/xroad/signer.log
 19:14:20 WARN  [Signer-akka.actor.default-dispatcher-2403] e.r.x.c.c.globalconf.GlobalConfImpl -
 Global configuration is invalid: {}
 ee.ria.xroad.common.CodedException: OutdatedGlobalConf: /etc/xroad/globalconf/FI/private-params.xml is too old
-        at ee.ria.xroad.common.conf.globalconf.ConfigurationDirectoryV2.verifyUpToDate(ConfigurationDirectoryV2.
-java:304) ~[signer-1.0.jar:na]
-        at ee.ria.xroad.common.conf.globalconf.ConfigurationDirectoryV2$Walker.visitFile(ConfigurationDirectoryV
-2.java:225) ~[signer-1.0.jar:na]
-        at ee.ria.xroad.common.conf.globalconf.ConfigurationDirectoryV2$Walker.visitFile(ConfigurationDirectoryV
-2.java:215) ~[signer-1.0.jar:na]
-        at java.nio.file.Files.walkFileTree(Files.java:2670) ~[na:1.8.0_121]
-        at java.nio.file.Files.walkFileTree(Files.java:2742) ~[na:1.8.0_121]
-        at ee.ria.xroad.common.conf.globalconf.ConfigurationDirectoryV2.eachFile(ConfigurationDirectoryV2.java:2
-12) ~[signer-1.0.jar:na]
-        at ee.ria.xroad.common.conf.globalconf.ConfigurationDirectoryV2.verifyUpToDate(ConfigurationDirectoryV2.
-java:314) ~[signer-1.0.jar:na]
-        at ee.ria.xroad.common.conf.globalconf.CachingConfigurationDirectory.verifyUpToDate(CachingConfiguration
-Directory.java:122) ~[signer-1.0.jar:na]
 ```
----
-
-template: sininen-palkki
-
-# signer.log
+--
 
 * OutdatedGlobalConf: /etc/xroad/globalconf/FI/private-params.xml is too old
 * Keskuskonfiguraatio on liian vanha
@@ -232,7 +211,7 @@ template: header
 
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 1/5
+# Allekirjoitusvarmenne ei kunnossa 1/2
 
 * Provider-liityntäpalvelimella allekirjoitusvarmenneongelma.
 
@@ -249,25 +228,9 @@ ee.ria.xroad.common.CodedException$Fault: Server.ServerProxy.ServiceFailed.Canno
 
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 2/5
+# Allekirjoitusvarmenne ei kunnossa 2/2
 
-* Provider-liityntäpalvelimen allekirjoitusvarmenneongelma.
-
-```log
-2017-04-07 13:47:16,889 [qtp1369468094-1375] ERROR e.r.x.p.s.ServerProxyHandler - Request processing error (a3e009b2-ea7a-4678-809f-aaa2292477ea)
-ee.ria.xroad.common.CodedException: Server.ServerProxy.ServiceFailed.CannotCreateSignature: Failed to get signing info for member 'SUBSYSTEM:LXDJ/COM/500/SS1': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:LXDJ/COM/500/SS1'
-	at ee.ria.xroad.proxy.conf.CachingKeyConfImpl.getSigningCtx(CachingKeyConfImpl.java:84) ~[proxy-1.0.jar:na]
-	at ee.ria.xroad.proxy.conf.KeyConf.getSigningCtx(KeyConf.java:122) ~[proxy-1.0.jar:na]
-```
-* Provider / proxy.log
-
----
-
-template: sininen-palkki
-
-# Allekirjoitusvarmenne ei kunnossa 3/5
-
-* Provider-liityntäpalvelimen allekirjoitusvarmenneongelma.
+* Provider-liityntäpalvelimella allekirjoitusvarmenneongelma.
 
 ```log
 2017-04-07 13:47:16,872 ERROR [Signer-akka.actor.default-dispatcher-3] e.r.x.s.p.AbstractRequestHandler - Error in request handler
@@ -279,39 +242,9 @@ ee.ria.xroad.common.CodedException: UnknownMember: Could not find any certificat
 * Provider / signer.log
 
 ---
-
 template: sininen-palkki
 
-# Allekirjoitusvarmenne ei kunnossa 4/5
-
-* Consumer-liityntäpalvelimen allekirjoitusvarmenneongelma.
-
-```log
-2016-04-20 12:22:34,950 [qtp1446511153-75] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
-ee.ria.xroad.common.CodedException: CannotCreateSignature: Failed to get signing info for member 'SUBSYSTEM:FI/GOV/JH-DEV2/SS1': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:FI/GOV/JH-DEV2/SS1'
-```
-
-* Consumer / signer.log
-
----
-
-template: sininen-palkki
-
-# Allekirjoitusvarmenne ei kunnossa 5/5
-
-* Consumer-liityntäpalvelimen allekirjoitusvarmenneongelma.
-
-```log
-2016-04-20 11:46:20,828 [qtp26059997-224] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
-ee.ria.xroad.proxy.clientproxy.ClientException: Client.CannotCreateSignature: Could not get OCSP responses for certificates ([641969ac5b023e0a4f5e9ebafe75e4aeb4dacdec])'
-```
-
-* Consumer / signer.log
-
----
-template: sininen-palkki
-
-# Autentikointivarmenne ei kunnossa 1/2
+# Autentikointivarmenne ei kunnossa
 
 * liityntäpalvelimella (Provider tai Consumer) autentikointivarmenneongelma.
 
@@ -326,24 +259,7 @@ ee.ria.xroad.common.CodedException: Signer.KeyNotFound: Could not find active au
 
 * proxy.log
 * Liityntäpalvelimen autentikointivarmenne ei ole kunnossa validia autentikointivarmennetta
-* Varmennetta ei ole? Varmenne ei voimassa? 
-
----
-
-template: sininen-palkki
-
-# Autentikointivarmenne ei kunnossa 2/2
-
-* Provider-liityntäpalvelimella autentikointivarmenneongelma.
-
-```log
-2016-04-20 14:10:05,315 [qtp2082353865-306] ERROR e.r.x.p.c.AbstractClientProxyHandler - Request processing error
-ee.ria.xroad.common.CodedException: SslAuthenticationFailed: Service provider did not send correct authentication certificate
-```
-
-* Consumer / proxy.log
-* Provider liityntäpalvelin ei lähettänyt validia autentikointivarmennetta
-* Varmenne ei voimassa?
+* Varmennetta ei ole? Varmenne ei voimassa?
 
 ---
 template: header
