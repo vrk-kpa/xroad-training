@@ -34,10 +34,7 @@ Liityntäpalvelimen suorituskykyä seurataan jatkuvasti ja toimintaa pyritään 
         * Lue lisää: [Liityntäpalvelimen tekniset vaatimukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-tekniset-vaatimukset/)
     + **_merkittävästi_** käytetystä liityntäpalvelimen ohjelmistoversiosta (uusimmat tehokkaimpia)
     + **_merkittävästi_** yhtäaikaisten palvelukutsujen määrästä
-    + **_merkittävästi_** väylässä välitettävien viestien (palvelukutsut ja –vastaukset) sanomakoosta. Isot sanomat vaatii enemmän prosessointia.
-    + **_paljon_** käytetyistä muistiasetuksista
-        * Säädä oman liityntäpalvelimen muistiasetukset!
-            - [Liityntäpalvelimen suositellut muistiasetukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-suositellut-muistiasetukset/)
+    + **_merkittävästi_** väylässä välitettävien viestien (palvelukutsut ja –vastaukset) sanomakoosta. Isot SOAP (XML) sanomat vaativat enemmän prosessointia.
 
 ---
 
@@ -46,7 +43,10 @@ template: sininen-palkki
 # Liityntäpalvelimen suorityskyky (jatkoa)
 
 - Liityntäpalvelimen suorituskyky riippuu useasta tekijästä:
-    + **_merkittävästi_** ulkoisen kuormantasaajan käyttämisestä (kts. oma osa-alueensa koulutuspaketissa)
+    + **_paljon_** käytetyistä muistiasetuksista
+        * Säädä oman liityntäpalvelimen muistiasetukset!
+            - [Liityntäpalvelimen suositellut muistiasetukset](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/hyva-tietaa/liityntapalvelimen-suositellut-muistiasetukset/)
+    + **_merkittävästi_** ulkoisen kuormantasaajan käyttämisestä (kts. oma osa-alueensa koulutusmateriaalissa)
     + **_paljon_** käytetystä verkosta (verkon nopeudesta)
     + (_enemmän tai vähemmän_) liitetyn asiakasjärjestelmän palvelun toteutuksesta ja/tai verkkoinfrasta
 
@@ -59,7 +59,7 @@ template: sininen-palkki
 - Jokainen liityntäpalvelimen ohjelmistoversio suorituskyky testataan moneen kertaan.
     + Kahdet eri suorituskykytestit (kahdella erilaisella alustaympäristöllä):
         * Minimikokoonpano (1 x cpu, 4G keskusmuisti, 7G levy)
-        * Raskas tuotantokäyttö (8 x cpu, 16G keskusmuisti, 250G levy
+        * Raskas tuotantokäyttö (8 x cpu, 16G keskusmuisti, 250G levy)
     + Saatuja tuloksia seurataan systemaattisesti
     + Suorituskykytestauksen periaate:
         * Testataan sanomakoot 100B – 10M 
