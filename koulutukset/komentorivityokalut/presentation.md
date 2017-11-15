@@ -210,7 +210,7 @@ $ \c serverconf
 
 ```bash
 $ \d
-$ \c serverconf
+$ \d serverconf
 $ select * from serverconf;
 ```
 
