@@ -57,7 +57,7 @@ template: sininen-palkki
 ```bash
 $ /usr/share/xroad/scripts/backup_xroad_proxy_configuration.sh -s AA/GOV/TS1OWNER/TS1 -f /var/lib/xroad/backup/mybackup.tar
 ```
-- Skriptiä hyödyntää halutessaan itse luotavalla CRON-jobilla ajettavaksi
+- Skriptiä voidaan halutessaan hyödyntää itse luotavalla CRON-jobilla ajettavaksi
 
 ---
 
