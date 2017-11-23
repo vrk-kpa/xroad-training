@@ -36,10 +36,21 @@ class: split-55
    - isot kirjaimet,
    - numerot,
    - erikoismerkit.
-- PIN-koodi täytyy säilyttää turvallisessa paikassa.
-   - Palauttaminen ei ole mahdollista
 ]
 .column[![PIN-koodi](../images/pin-koodi.png)]
+
+---
+template: sininen-palkki
+class: split-55
+
+# Turvallisuus
+
+- PIN-koodi täytyy säilyttää turvallisessa paikassa.
+   - Palauttaminen ei ole mahdollista
+   
+- Riskinä on, että pin-koodin haltuunsa saanut ulkopuolinen voisi kloonata olemassa oleva liityntäpalvelimen
+käyttämällä backup-toimintoa. 
+
 
 ---
 
@@ -106,5 +117,7 @@ template: sininen-palkki
 https://github.com/ria-ee/X-Road/blob/master/doc/Manuals/Utils/ug-autologin_x-road_v6_autologin_user_guide.md 
 
 ---
+
 template: header
+
 # Kysymyksiä?

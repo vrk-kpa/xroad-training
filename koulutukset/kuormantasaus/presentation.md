@@ -45,6 +45,7 @@ template: sininen-palkki
 * Jos sama palvelu (sama organisaatio & alijärjestelmä & palvelu) on rekisteröity usealle liityntäpalvelimelle, käytetään sitä liityntäpalvelinta joka vastaa nopeiten
 
 ![](../images/internal-load-balancer.png)
+
 ---
 
 template: sininen-palkki
@@ -72,9 +73,11 @@ yleensä nopein vastaamaan pyyntöihin ("lyhyimmät piuhat")
 template: sininen-palkki
 
 # Ulkoinen kuormantasaus
+
 * Liityntäpalvelin klusterin edessä ulkoinen kuormantasaaja jakaa kuorman klusterin nodeille
 * Kuormatasaaja havaitsee vikaantuneen noden ja lakkaa tarjoamasta sille kuormaa
 * Tarjoaa liityntäpalvelimeen skaalautuvan suorituskyvyn ja vikasietoisuuden
+
 ![image](../images/external-load-balancer.png)
 
 ---
@@ -82,6 +85,7 @@ template: sininen-palkki
 template: sininen-palkki
 
 # Toimintaperiaate
+
 * Klusteriin kuuluu n kappaletta nodeja
 * Kaikki nodet palvelevat aktiivisesti asiakkaita (ei hot standby)
 * Ulkomaailma näkee nämä yhtenä liityntäpalvelimena
@@ -95,6 +99,7 @@ template: sininen-palkki
 template: sininen-palkki
 
 # Tekninen toteutus
+
 * Konfiguraatiotietokanta on klusteroitu
   * PostgreSQL streaming replication (hot standby)
 * Konfiguraatiotiedostot kopioidaan masterilta slaveille
@@ -110,6 +115,7 @@ template: sininen-palkki
 template: sininen-palkki
 
 # Ulkoisen kuormantasaajan käyttöönotto
+
 * Asennus
   * Ansible https://github.com/ria-ee/X-Road/blob/develop/ansible/ss_cluster/README.md
   * Asennus käsin https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md
@@ -117,6 +123,50 @@ template: sininen-palkki
   * Esim. AWS ELB, F5, haproxy, nginx
 * Mahdollista käyttää automaattista PIN-koodin syöttöä (xroad-autologin)
   * Tietoturva huomioitava
+
+---
+
+template: sininen-palkki
+
+# Kuormantasauksen healthcheck
+
+* Mukana 6.16.0 versiosta lähtien
+* Healthcheck palauttaa HTTP 200 OK viestin kun liityntäpalvelin on toimintakuntoinen, ja HTTP 500 mikäli ei
+* Erikseen konfiguroitava käyttöön, oletuksena pois päältä
+
+```bash
+$ curl -i localhost:5588
+HTTP/1.1 500 Server Error
+Transfer-Encoding: chunked
+Server: Jetty(8.y.z-SNAPSHOT)
+
+Fetching health check response timed out for: Authentication key OCSP status
+```
+
+Lisätietoa ulkoisen kuormantasauksen dokumentaatiossa: https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md#34-health-check-service-configuration
+
+---
+
+template: sininen-palkki
+
+# Liityntäpalvelinten päivittäminen
+
+* Vaihtoehtoina joko offline-päivittäminen 
+    - Keskeytetään palvelun käyttö
+* Tai ns. rolling upgrade
+    - palvelun käyttöä voidaan jatkaa keskeyttämättömänä
+
+Ohjeet: 
+https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md#7-upgrading-a-clustered-x-road-security-server-installation
+
+---
+
+template: sininen-palkki
+
+# Lisätietoa
+
+Käy lukemassa kuormantasaajaan liittyvä blogipostaus eSuomesta:
+- https://esuomi.fi/palveluvaylaan-lisaa-tehoa-kuormantasaajan-kaytto-mahdolliseksi/
 
 ---
 

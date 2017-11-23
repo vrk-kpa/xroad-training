@@ -158,5 +158,6 @@ template: sininen-palkki
 - Kuten ympäristön valvonta, toimii joko JMX:llä tai X-Road SOAP palvelukutsuilla
 
 ---
+
 template: header
 # Kysymyksiä?

@@ -20,7 +20,7 @@ class: valkoinen
 
 template: header
 
-# Liityntäpalvelimen ylläpito ja valvonta
+# Prosessit, portit ja konfiguraatioparametrit
 
 ---
 

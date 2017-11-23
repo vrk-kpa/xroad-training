@@ -19,6 +19,7 @@ class: center, middle, sininen
 ---
 
 template: header
+
 # Lokivirheet
 
 ---
@@ -49,7 +50,8 @@ Log file: /var/log/xroad/configuration_client.log
 - Keskuskonfiguraation haku epäonnistui
 - Kertoo osoitteet, mistä hakua yritettiin
 - Verkko & palomuurit?
-- Liityntäpalvelin on kuitenkin käyttökelpoinen keskuskonfiguraation voimassaolon ajan (esim. 72 tuntia)
+- Liityntäpalvelin on kuitenkin käyttökelpoinen keskuskonfiguraation voimassaolon ajan
+    - Voimassaoloajat eri ympäristöissä (22.11.2017): FI-DEV = 10min, FI-TEST 81h ja FI 84h
 
 ---
 
@@ -242,6 +244,7 @@ ee.ria.xroad.common.CodedException: UnknownMember: Could not find any certificat
 * Provider / signer.log
 
 ---
+
 template: sininen-palkki
 
 # Autentikointivarmenne ei kunnossa
@@ -262,5 +265,17 @@ ee.ria.xroad.common.CodedException: Signer.KeyNotFound: Could not find active au
 * Varmennetta ei ole? Varmenne ei voimassa?
 
 ---
+
+template: sininen-palkki
+
+# Valvontatyökaluista
+
+Esimerkkejä lokitapahtumien valvontatyökaluista
+
+* epylog 
+* Logwatch
+
+---
+
 template: header
 # Kysymyksiä?

@@ -133,7 +133,7 @@ template: sininen-palkki
 - Expires
    - Voimassaoloaika
 - Status
-   - Registered / Registration in progress / Deleted...
+   - Registered / Registration in progress / Deleted
 
 ---
 
@@ -312,6 +312,9 @@ template: sininen-palkki
 # Viestinvälityksen testaaminen
 
 - Luonnollisesti myös oikeita palveluita voi käyttää testaamiseen metapalvelujen sijaan
+    - Esimerkiksi kaikille käytössä olevat testipalvelut:  
+        - https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/konfigurointiohjeita/palveluvaylan-testipalvelut/ 
+
 - Myös liityntäpalvelimen omia palveluja voi kutsua (client = server)
 
 ---
@@ -324,16 +327,7 @@ template: sininen-palkki
 - Healthcheck palauttaa HTTP 200 OK viestin kun liityntäpalvelin on toimintakuntoinen, ja HTTP 500 mikäli ei
 - Erikseen konfiguroitava käyttöön, oletuksena pois päältä
 
-```bash
-$ curl -i localhost:5588
-HTTP/1.1 500 Server Error
-Transfer-Encoding: chunked
-Server: Jetty(8.y.z-SNAPSHOT)
-
-Fetching health check response timed out for: Authentication key OCSP status
-```
-
-Lisätietoa ulkoisen kuormantasauksen dokumentaatiossa: https://github.com/ria-ee/X-Road/blob/develop/doc/Manuals/LoadBalancing/ig-xlb_x-road_external_load_balancer_installation_guide.md#34-health-check-service-configuration
+- Lue lisää kuormantasauksen tietopaketista: https://vrk-kpa.github.io/xroad-training/koulutukset/kuormantasaus/#10
 
 ---
 
@@ -349,5 +343,7 @@ template: sininen-palkki
 - Alustavalvonta
 
 ---
+
 template: header
+
 # Kysymyksiä?

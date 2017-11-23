@@ -54,10 +54,8 @@ template: sininen-palkki
 # PIN-koodi
 
 * PIN-koodia käytetään suojaamaan liityntäpalvelimelle tallennettuja avaimia
-* Pidä PIN-koodisi tallessa! Tunnistevälineen (software token) tallentamien avainten tai
-PIN-koodin palauttaminen ei ole mahdollista.
-* Koodin syöttäminen vaaditaan aina palvelimen uudelleenkäynnistyksen jälkeen
-    * Ilman PIN-koodin aktivointia sanomaliikenne ei ole mahdollista
+* Lisää aiheesta:
+    * https://vrk-kpa.github.io/xroad-training/koulutukset/PIN-koodi/#1 
 
 .center[![small-image](../images/pin-koodi.png)]
 
@@ -80,6 +78,8 @@ template: sininen-palkki
 # Varmuuskopiointi ja palauttaminen
 
 * Tallentaa liityntäpalvelimen konfiguraation, sisältäen avaimet ja varmenteet
+* Suositeltavaa tehdä päivitysten yhteydessä
+    * Lisää aiheesta: https://vrk-kpa.github.io/xroad-training/koulutukset/varmuuskopiointi/#1
 
 .center[![medium-image](../images/backup-restore.png)]
 
@@ -92,10 +92,7 @@ template: sininen-palkki
 * Diagnostics-välilehti kertoo nopeasti keskuskonfiguraation, aikaleimapalvelun ja OSCP-hakujen tilan katsomatta
 tarkemmin liityntäpalvelimen lokitiedostoista
 
-    * Punainen väri: Yhteyttä ei ole / haku epäonnistunut  
-    * Keltainen väri: Yhteydenavausta tai hakua ei olla ehditty vielä tekemään
-    * Vihreä: Yhteydet toimii / haut onnistuivat
-
+    * Lisää aiheesta: https://vrk-kpa.github.io/xroad-training/koulutukset/toiminnan-testaus/#3
 
 .center[![small-image](../images/diagnostics.png)]
 
@@ -108,6 +105,8 @@ template: sininen-palkki
 * HTTPS-yhteyksien käyttöä varten käyttöliittymään voidaan lisätä luotettuja TLS-varmenteita
     * TLS:n käyttö määritellään WSDL-rajapinnan lisäämisen yhteydessä
 * Security Server Certificate -kohdasta voidaan hakea liityntäpalvelimen oma palvelinvarmenne
+
+* Lisää aiheesta: https://vrk-kpa.github.io/xroad-training/koulutukset/salausasetukset/#1
 
 .center[![small-image](../images/internal-certificates.png)]
 

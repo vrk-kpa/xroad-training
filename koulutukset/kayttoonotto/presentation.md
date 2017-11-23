@@ -71,7 +71,6 @@ template: sininen-palkki
 # Liityntäkatalogi 
 
 - Tuotantoympäristö (FI) https://liityntakatalogi.suomi.fi/ 
-
 - Epävirallinen(!) testiympäristön katalogi (FI-TEST): https://liityntakatalogi.qa.suomi.fi/fi/ 
 
 ---

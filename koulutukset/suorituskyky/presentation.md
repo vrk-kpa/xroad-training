@@ -27,6 +27,7 @@ template: header
 template: sininen-palkki
 
 # Liityntäpalvelimen suorityskyky
+
 Liityntäpalvelimen suorituskykyä seurataan jatkuvasti ja toimintaa pyritään jatkuvasti parantamaan ja suorituskykyä lisäämään.
 
 - Liityntäpalvelimen suorituskyky riippuu useasta tekijästä:
@@ -136,4 +137,5 @@ Lasketaan worst case skenaariolla:
 ---
 
 template: header
+
 # Kysymyksiä?

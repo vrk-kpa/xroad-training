@@ -19,6 +19,7 @@ class: center, middle, sininen
 ---
 
 template: header
+
 # Salausasetukset
 
 ---
@@ -29,6 +30,9 @@ template: sininen-palkki
 
 - Palvelun liittäminen liityntäpalvelimeeen http- tai https-protokollalla
    - [Uuden palvelun lisääminen liityntäpalvelimelle ](https://esuomi.fi/palveluntarjoajille/palveluvayla/tekninen-aineisto/konfigurointiohjeita/uuden-palvelun-lisaaminen-liityntapalvelimelle/)
+
 ---
+
 template: header
+
 # Kysymyksiä?
