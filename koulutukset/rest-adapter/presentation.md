@@ -158,97 +158,6 @@ GET -> http://host/rest-adapter-service/Consumer/parametersdemo/88?someparam=ban
 template: sininen-palkki
 class: split-55
 
-# wrappers=false
-
-.column[![Kuva](../images/rest-adapter-clip.png)]
-.column[
-```xml
-<SOAP-ENV:Body>
-    <toimija:HaeToimijaPTF xmlns:toimija="http://vrk.fi/example/toimija">
-        <toimija:Tunniste2>foobar2</toimija:Tunniste2>
-        <toimija:Tunniste>foobar1</toimija:Tunniste>
-    </toimija:HaeToimijaPTF>
-</SOAP-ENV:Body>
-```
-]
-
----
-
-template: sininen-palkki
-class: split-55
-
-# Yhden namespacen tuki
-
-.column[![Kuva](../images/rest-adapter-clip.png)]
-.column[
-```shell
-1.namespace.serialize=http://vrk.fi/example/viesti
-1.namespace.prefix.serialize=vies
-1.namespace.deserialize=http://vrk.fi/example/viesti
-```
-
-```xml
-<SOAP-ENV:Body>
-    <vies:LisaaViesti xmlns:vies="http://vrk.fi/example/viesti">
-        <vies:LahettajaTunniste>tunniste-123</vies:LahettajaTunniste>
-        <vies:Viesti>
-            <vies:ViestiKetjuTunniste>12345678</vies:ViestiKetjuTunniste>
-            <vies:Otsikko>otsikko string</vies:Otsikko>
-            <vies:Sisalto>sisältö string</vies:Sisalto>
-            <vies:Liite>
-                <vies:Otsikko>liite-otsikko-1</vies:Otsikko>
-                <vies:Nimi>liite-1</vies:Nimi>
-                <vies:MediaTyyppi>application/pdf</vies:MediaTyyppi>
-            </vies:Liite>
-            <vies:Liite>
-                <vies:Otsikko>liite-otsikko-2</vies:Otsikko>
-                <vies:Nimi>liite-2</vies:Nimi>
-                <vies:MediaTyyppi>image/png</vies:MediaTyyppi>
-            </vies:Liite>
-        </vies:Viesti>
-    </vies:LisaaViesti>
-</SOAP-ENV:Body>
-```
-]
-
----
-
-template: sininen-palkki
-class: split-55
-
-# Useampi namespace ei ole tuettu
-
-.column[![Kuva](../images/rest-adapter-clip.png)]
-.column[
-```xml
-<SOAP-ENV:Body>
-    <vies:LisaaViesti xmlns:vies="http://vrk.fi/example/viesti">
-        <vies:LahettajaTunniste>tunniste-123</vies:LahettajaTunniste>
-        <vies:Viesti>
-            <vies:ViestiKetjuTunniste>12345678</vies:ViestiKetjuTunniste>
-            <vies:Otsikko>otsikko string</vies:Otsikko>
-            <vies:Sisalto>sisältö string</vies:Sisalto>
-            <liite:Liite xmlns:liite="http://vrk.fi/example/liite">
-                <liite:Otsikko>liite-otsikko-1</liite:Otsikko>
-                <liite:Nimi>liite-1</vies:Nimi>
-                <liite:MediaTyyppi>application/pdf</liite:MediaTyyppi>
-            </liite:Liite>
-            <liite:Liite xmlns:liite="http://vrk.fi/example/liite">
-                <liite:Otsikko>liite-otsikko-2</liite:Otsikko>
-                <liite:Nimi>liite-2</liite:Nimi>
-                <liite:MediaTyyppi>image/png</liite:MediaTyyppi>
-            </vies:Liite>
-        </vies:Viesti>
-    </vies:LisaaViesti>
-</SOAP-ENV:Body>
-```
-]
-
----
-
-template: sininen-palkki
-class: split-55
-
 # X-Road headerit
 
 .column[![Kuva](../images/rest-adapter-clip.png)]
@@ -392,8 +301,131 @@ class: split-55
 ```
 ]
 
+---
+
+template: sininen-palkki
+class: split-55
+
+# Yhden namespacen tuki
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```shell
+1.namespace.serialize=http://vrk.fi/example/viesti
+1.namespace.prefix.serialize=vies
+1.namespace.deserialize=http://vrk.fi/example/viesti
+```
+
+```xml
+<SOAP-ENV:Body>
+    <vies:LisaaViesti xmlns:vies="http://vrk.fi/example/viesti">
+        <vies:LahettajaTunniste>tunniste-123</vies:LahettajaTunniste>
+        <vies:Viesti>
+            <vies:ViestiKetjuTunniste>12345678</vies:ViestiKetjuTunniste>
+            <vies:Otsikko>otsikko string</vies:Otsikko>
+            <vies:Sisalto>sisältö string</vies:Sisalto>
+            <vies:Liite>
+                <vies:Otsikko>liite-otsikko-1</vies:Otsikko>
+                <vies:Nimi>liite-1</vies:Nimi>
+                <vies:MediaTyyppi>application/pdf</vies:MediaTyyppi>
+            </vies:Liite>
+            <vies:Liite>
+                <vies:Otsikko>liite-otsikko-2</vies:Otsikko>
+                <vies:Nimi>liite-2</vies:Nimi>
+                <vies:MediaTyyppi>image/png</vies:MediaTyyppi>
+            </vies:Liite>
+        </vies:Viesti>
+    </vies:LisaaViesti>
+</SOAP-ENV:Body>
+```
+]
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# Useampi namespace ei ole tuettu
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```xml
+<SOAP-ENV:Body>
+    <vies:LisaaViesti xmlns:vies="http://vrk.fi/example/viesti">
+        <vies:LahettajaTunniste>tunniste-123</vies:LahettajaTunniste>
+        <vies:Viesti>
+            <vies:ViestiKetjuTunniste>12345678</vies:ViestiKetjuTunniste>
+            <vies:Otsikko>otsikko string</vies:Otsikko>
+            <vies:Sisalto>sisältö string</vies:Sisalto>
+            <liite:Liite xmlns:liite="http://vrk.fi/example/liite">
+                <liite:Otsikko>liite-otsikko-1</liite:Otsikko>
+                <liite:Nimi>liite-1</vies:Nimi>
+                <liite:MediaTyyppi>application/pdf</liite:MediaTyyppi>
+            </liite:Liite>
+            <liite:Liite xmlns:liite="http://vrk.fi/example/liite">
+                <liite:Otsikko>liite-otsikko-2</liite:Otsikko>
+                <liite:Nimi>liite-2</liite:Nimi>
+                <liite:MediaTyyppi>image/png</liite:MediaTyyppi>
+            </vies:Liite>
+        </vies:Viesti>
+    </vies:LisaaViesti>
+</SOAP-ENV:Body>
+```
+]
 
 
+---
+
+template: sininen-palkki
+class: split-55
+
+# Sekalaisia toimintoja
+
+- resurssilinkkien muuttaminen
+  - *Consumer:* `response.modurl = true`
+  
+```json
+{
+   "resultsFrom":0,
+   "totalResults":-1,
+   "nextResultsUri":"http://localhost:8080/rest-adapter-service/Consumer/avoindata.prh.fi/opendata/bis/v1?resultsFrom=10&totalResults=false&companyRegistrationFrom=2016-02-28&name=asunto",
+  ...
+```
+---
+
+template: sininen-palkki
+class: split-55
+
+# Sekalaisia toimintoja 2
+
+- parametrien muuttaminen regexillä
+  - *Provider:* `reqParamNameFilterCondition`
+  - *Provider:* `reqParamNameFilterOperation`
+  - *Provider:* `reqParamValueFilterCondition`
+  - *Provider:* `reqParamValueFilterOperation`
+- "selainkäyttömoodi"
+  - *Consumer:* `serviceCallsByXRdServiceId.enabled = true`
+  - http://localhost:8080/rest-adapter-service/Consumer/FI_PILOT.GOV.1019125-0.Demo2Service.searchCompany.v1/?totalResults=false&resultsFrom=0&name=asunto&companyRegistrationFrom=2015-02-28&X-XRd-UserId=test&X-XRd-MessageId=1&X-XRd-NamespaceSerialize=http://vrk-test.x-road.fi/producer&X-XRd-NamespacePrefixSerialize=ks&Accept=application/json
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# ConsumerAndProviderTest.java
+
+![Kuva](../images/rest-adapter-wiremock-testi.png)
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# Paikallisen kehityksen työkaluja
+
+![Kuva](../images/rest-adapter-paikallinen-kehitys.png)
+
+![pct-60](../images/rest-adapter-soapui.png)
 
 ---
 
@@ -410,3 +442,5 @@ class: split-55
 - https://confluence.csc.fi/pages/viewpage.action?pageId=66685001
 
 ---
+
+# Loppu / Fin
