@@ -177,7 +177,7 @@ class: split-55
 template: sininen-palkki
 class: split-55
 
-# single namespace support
+# Yhden namespacen tuki
 
 .column[![Kuva](../images/rest-adapter-clip.png)]
 .column[
@@ -216,7 +216,7 @@ class: split-55
 template: sininen-palkki
 class: split-55
 
-# multiple namespaces = impossible
+# Useampi namespace ei ole tuettu
 
 .column[![Kuva](../images/rest-adapter-clip.png)]
 .column[
@@ -243,6 +243,114 @@ class: split-55
 </SOAP-ENV:Body>
 ```
 ]
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# X-Road headerit
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+- Adapter osaa muuntaa X-Road headerit HTTP headereiksi, ja päinvastoin
+- Consumer voi asettaa vain userId ja id headerin
+
+HTTP Header  | X-Road Header
+------------- | -------------
+X-XRd-Client  | client
+X-XRd-Service  | service
+X-XRd-UserId  | userId
+X-XRd-MessageId  | id
+]
+
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# Salaus
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```shell
+10.convertPost=true
+10.request.encrypted=true
+10.response.encrypted=true
+```
+POST http://.../Consumer/crypted/
+```json
+{ "Tunniste": "12345" }
+```
+Provider:
+```xml
+<SOAP-ENV:Body>
+    <toimija:HaeToimijaPTT xmlns:toimija="http://vrk.fi/example/toimija">
+        <toimija:encrypted>+y48Nr3yvz7eFu+...</toimija:encrypted>
+        <toimija:key>aBIeAMn+eDFhR...</toimija:key>
+        <toimija:iv>YhZBl8HmfJtwvwYLqvdrRw==</toimija:iv>
+    </toimija:HaeToimijaPTT>
+</SOAP-ENV:Body>
+```
+]
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# Salaus, 2
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```shell
+10.convertPost=false
+10.request.encrypted=true
+10.response.encrypted=true
+```
+```xml
+<SOAP-ENV:Body>
+    <toimija:HaeToimijaPTT xmlns:toimija="http://vrk.fi/example/toimija">
+        <toimija:encrypted>matjTIPx5rUwrRI2U...</toimija:encrypted>
+        <toimija:key>Le5AbsrbyuBhhxJ...</toimija:key>
+        <toimija:iv>9Io8MPcB+358Ff9lspbbHA==</toimija:iv>
+    </toimija:HaeToimijaPTT>
+</SOAP-ENV:Body>
+```
+```shell
+..------=_Part_3_2034243225.1511790096912
+..Content-Type: application/json;charset=UTF-8
+..Content-ID: RESTGatewayRequestBody
+....87HmG1lW7i2zpxAtTQB+F/ghEweBqXKbuSHOul+apmI=
+..------=_Part_3_2034243225.1511790096912--                   
+```
+
+]
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# Salaus, 3
+
+1. Consumer ja Provider vaihtavat julkiset avaimensa (CP1, PP1) _jotenkin_ 
+2. Consumer luo kertakäyttöisen avaimen K1
+3. Consumer salaa datan avaimella K1
+4. Consumer salaa K1:n PP1:llä
+5. Consumer lähettää (1) salatun datan, (2) salatun K1:n ja (3) IV:n
+- Konfigurointi, consumer-gateway.properties:
+```shell
+publicKeyFile=/home/janne/kapa/.../consumertruststore.jks
+publicKeyFilePassword=consumerts
+privateKeyFile=/home/janne/.../consumerkeystore.jks
+privateKeyFilePassword=consumerks
+privateKeyAlias=consumerpri
+privateKeyPassword=consumer
+```
+- Trustoreen tallennetaan varmenteet niin että alias on palvelun tai clientin tunniste
+https://github.com/vrk-kpa/REST-adapter-service/blob/master/documentation/Encryption.md
 
 ---
 
