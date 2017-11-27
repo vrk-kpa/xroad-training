@@ -44,6 +44,85 @@ class: split-55
 template: sininen-palkki
 class: split-55
 
+# Accept:application/json
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```
+{
+
+   "PaluuKoodi": "OK",
+   "Teksti": "bar tekstiä",
+   "TekstiLisatiedot": "Foo tekstiä",
+   "Tarkenne": "Foo tarkenne"
+}
+```
+]
+---
+
+template: sininen-palkki
+class: split-55
+
+# Accept:application/xml
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```
+<toimija:HaeToimijaPFFResponse xmlns:toimija="http://vrk.fi/example/toimija">
+   <toimija:PaluuKoodi>OK</toimija:PaluuKoodi>
+   <toimija:Teksti>bar tekstiä</toimija:Teksti>
+   <toimija:TekstiLisatiedot>Foo tekstiä</toimija:TekstiLisatiedot>
+   <toimija:Tarkenne>Foo tarkenne</toimija:Tarkenne>
+</toimija:HaeToimijaPFFResponse>
+
+```
+]
+---
+
+template: sininen-palkki
+class: split-55
+
+# wrappers=false
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```
+<SOAP-ENV:Body>
+    <toimija:HaeToimijaPTF xmlns:toimija="http://vrk.fi/example/toimija">
+        <toimija:Tunniste2>foobar2</toimija:Tunniste2>
+        <toimija:Tunniste>foobar1</toimija:Tunniste>
+    </toimija:HaeToimijaPTF>
+</SOAP-ENV:Body>
+```
+]
+
+---
+
+template: sininen-palkki
+class: split-55
+
+# wrappers=true
+
+.column[![Kuva](../images/rest-adapter-clip.png)]
+.column[
+```
+<SOAP-ENV:Body>
+    <toimija:HaeToimijaPTF xmlns:toimija="http://vrk.fi/example/toimija">
+        <toimija:request>
+            <toimija:Tunniste2>foobar2</toimija:Tunniste2>
+            <toimija:Tunniste>foobar1</toimija:Tunniste>
+        </toimija:request>
+    </toimija:HaeToimijaPTF>
+</SOAP-ENV:Body>
+```
+]
+
+
+---
+
+template: sininen-palkki
+class: split-55
+
 # Automaattiset integraatiotestit gdevissä
 
 ![Kuva](../images/rest-adapter-gdev.png)
