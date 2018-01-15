@@ -34,17 +34,23 @@ template: sininen-palkki
 ![globalconf-pinkoodi](../images/Globalconf-pinkoodi-error.png)
 
 ---
+template: sininen-palkki
 
+# Diagnostiikka-näkymä
+
+![toiminnan-esim](../images/toiminnan-testaus-esim3.png)
+
+---
 template: sininen-palkki
 class: split-40
 
-# Diagnostiikka
+# Diagnostiikan tilat
 
 .column[
 - Vihreä = OK
 - Keltainen = Odottaa testausta
 - Punainen = Vika
-- Testit
+- Tarkistukset
    - Keskuskonfiguraation haku
    - Yhteys aikaleimapalvelimelle
    - Yhteys OCSP-responderiin
@@ -55,42 +61,48 @@ class: split-40
    ![status](../images/yellow.png)
    ![status](../images/red.png)
 ]
-
 ---
 
-template: sininen-palkki
-
-# Esimerkkejä
-
-1.  Palvelin on juuri käynnistetty
-   - PIN-koodia ei ole syötetty
-   - Keskuspalvelin ei ole saatavilla, keskuskonfiguraatioita ei voida hakea
-   - Yhtään viestiä ei olla välitetty (eikä aikaleimattu)
-2. Keskuspalvelin ja keskuskonfiguraatio ovat kunnossa
-   - Viestejä ei olla välitetty (eikä aikaleimattu)
-3. Viestejä on välitetty ja aikaleimattu
-
----
-
-template: sininen-palkki
+template: sininen-palkki 
+class: split-70
 
 # Esimerkki 1
-![toiminnan-esim](../images/toiminnan-testaus-esim1.png)
+.column[
+    ![toiminnan-esim](../images/toiminnan-testaus-esim1.png)
+]
 
+.column[
+- Palvelin on juuri käynnistetty
+- PIN-koodia ei ole syötetty
+- Keskuspalvelin ei ole saatavilla, keskuskonfiguraatioita ei voida hakea
+- Yhtään viestiä ei olla välitetty (eikä aikaleimattu)
+
+]
 ---
-
 template: sininen-palkki
-
+class: split-70
 # Esimerkki 2
-![toiminnan-esim](../images/toiminnan-testaus-esim2.png)
+.column[
+    ![toiminnan-esim](../images/toiminnan-testaus-esim2.png)
+]
 
+.column[
+- Keskuspalvelin ja keskuskonfiguraatio ovat kunnossa
+- Viestejä ei olla välitetty eikä aikaleimattu
+]
 ---
-
 template: sininen-palkki
+class: split-70
 
 # Esimerkki 3
-![toiminnan-esim](../images/toiminnan-testaus-esim3.png)
+.column[
+    ![toiminnan-esim](../images/toiminnan-testaus-esim3.png)
+]
 
+.column[
+- Viestejä on välitetty ja aikaleimattu 
+- Diagnostiikkatarkistukset kunnossa
+]
 ---
 
 template: sininen-palkki
@@ -125,7 +137,7 @@ template: sininen-palkki
 - Tietoa varmenteista
 - OCSP response
    - Unknown
-   - Good
+   - __Good__
    - Revoked
    - Expired
    - Suspended
@@ -185,12 +197,14 @@ template: sininen-palkki
 - listClients
 - listCentralServices
 - *listMethods*
-   - Listaus tietyn organisaation tarjoamista palveluista
+   - Listaus tietyn alijärjestelmän tarjoamista palveluista
    - Normaali X-Road SOAP protokollakutsu
    - Kutsu välitetään organisaation liityntäpalvelimelle
    - Sopii hyvin viestinvälityksen toimivuuden testaamiseen!
-- listAllowedMethods
-- wsdl
+- allowedMethods
+- getWsdl
+
+Metapalveluiden käyttö dokumentoitu: https://github.com/vrk-kpa/X-Road/blob/develop/doc/Protocols/pr-meta_x-road_service_metadata_protocol.md
 
 ---
 

@@ -86,7 +86,8 @@ template: sininen-palkki
 - Metapalvelu **getSecurityServerMetrics**
 - Eli normaali X-Road SOAP sanoma
 - Poikkeuksena elementti **server**, jota käytetään normaalien **client** ja **service** headerien lisäksi
-
+- Versiosta 6.16.x alkaen on mahdollista myös parameterisoida haettavat valvonta-arvot
+- Versiosta 6.17.x alkaen liityntäpalvelimen ylläpitäjän on mahdollista rajoittaa palvelimelta saatavien valvonta-arvojen määrä minimiin (X-Roada versio, Käyttöjärjestelmä, Varmennetiedot)
 ---
 
 template: valkoinen
