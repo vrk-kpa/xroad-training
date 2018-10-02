@@ -58,7 +58,7 @@ template: sininen-palkki
 
 # PIN-koodin virheitä
 
-- PIN-koodi syötettävä aina palvelimen tai xroad-signer -prosessin uudelleenkäynnistyksen jälkeen
+- PIN-koodi syötettävä aina palvelimen uudelleenkäynnistyksen jälkeen
 - Sanomien lähettäminen epäonnistuu, jos koodin aktivointi on jäänyt tekemättä.
    - Sanomat palauttavat faultcodea, joita kutsu palauttaa
    - Virheviestit tarkasteltavissa proxy-lokista
@@ -69,7 +69,7 @@ template: sininen-palkki
 
 # PIN-koodi aktivoimatta
    
-- Kutsujan (consumer) liityntäpalvelimella PIN-koodi syöttämättä - kutsu palauttaa:
+- Palveluntarjoajan provider-liityntäpalvelimella PIN-koodi syöttämättä - kutsu palauttaa:
 
 ```
 <SOAP-ENV:Body>
@@ -90,7 +90,7 @@ template: sininen-palkki
 
 # PIN-koodi aktivoimatta
 
-- Palveluntarjoajan provider-liityntäpalvelimella PIN-koodi syöttämättä - kutsu palauttaa:
+- Kutsujan (consumer) liityntäpalvelimella PIN-koodi syöttämättä - kutsu palauttaa:
 
 ```
 <SOAP-ENV:Body>
